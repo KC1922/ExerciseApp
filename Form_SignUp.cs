@@ -116,7 +116,7 @@ namespace ExerciseApp
 
                                 insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@userId", userId);
                                 insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@gender", string.IsNullOrEmpty(enteredGender)
-                                                                                                ? (object)DBNull.Value : enteredGender);
+                                                                                                ? "Other" : enteredGender);
                                 // Validate certain inputs to avoid insetion errors
                                 try
                                 {

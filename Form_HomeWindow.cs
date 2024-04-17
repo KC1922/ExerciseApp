@@ -49,5 +49,34 @@ namespace ExerciseApp
         {
             Application.Exit();
         }
+
+        private void comboBox_ExerciseList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string exerciseType = "";
+            string exerciseName = comboBox_ExerciseList.Text;
+            string selectExerciseType = "SELECT DISTINCT exercise_type FROM exercises WHERE exercise_name = @exercise_name";
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(dbConnection))
+            {
+                connection.Open();
+                using (NpgsqlCommand command = new NpgsqlCommand(selectExerciseType, connection))
+                {
+                    command.Parameters.AddWithValue("@exercise_name", exerciseName);
+                    exerciseType = command.ExecuteScalar()?.ToString();
+                }
+            }
+            if (string.Compare(exerciseType, "Cardio") != 0)
+            {
+                textBox_AvgPace.Enabled = false;
+                textBox_AvgSpeed.Enabled = false;
+                textBox_Distance.Enabled = false;
+            }
+            else
+            {
+                textBox_AvgPace.Enabled = true;
+                textBox_AvgSpeed.Enabled = true;
+                textBox_Distance.Enabled = true;
+            }
+        }
     }
 }

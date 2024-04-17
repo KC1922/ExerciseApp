@@ -42,9 +42,9 @@
             label_Duration = new Label();
             label_StartTime = new Label();
             label_Date = new Label();
-            textBox5 = new TextBox();
+            textBox_MinHR = new TextBox();
             textBox_MaxHR = new TextBox();
-            textBox1 = new TextBox();
+            textBox_Distance = new TextBox();
             label_MinHR = new Label();
             label_MaxHR = new Label();
             label_Distance = new Label();
@@ -53,8 +53,8 @@
             label_AveragePace = new Label();
             label_Exercise = new Label();
             label_CaloriesBurned = new Label();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            textBox_AvgSpeed = new TextBox();
+            textBox_AvgPace = new TextBox();
             textBox_Calories = new TextBox();
             panel_Top.SuspendLayout();
             panel1.SuspendLayout();
@@ -121,9 +121,9 @@
             panel_BackAddWorkout.Controls.Add(label_Duration);
             panel_BackAddWorkout.Controls.Add(label_StartTime);
             panel_BackAddWorkout.Controls.Add(label_Date);
-            panel_BackAddWorkout.Controls.Add(textBox5);
+            panel_BackAddWorkout.Controls.Add(textBox_MinHR);
             panel_BackAddWorkout.Controls.Add(textBox_MaxHR);
-            panel_BackAddWorkout.Controls.Add(textBox1);
+            panel_BackAddWorkout.Controls.Add(textBox_Distance);
             panel_BackAddWorkout.Controls.Add(label_MinHR);
             panel_BackAddWorkout.Controls.Add(label_MaxHR);
             panel_BackAddWorkout.Controls.Add(label_Distance);
@@ -132,8 +132,8 @@
             panel_BackAddWorkout.Controls.Add(label_AveragePace);
             panel_BackAddWorkout.Controls.Add(label_Exercise);
             panel_BackAddWorkout.Controls.Add(label_CaloriesBurned);
-            panel_BackAddWorkout.Controls.Add(textBox3);
-            panel_BackAddWorkout.Controls.Add(textBox2);
+            panel_BackAddWorkout.Controls.Add(textBox_AvgSpeed);
+            panel_BackAddWorkout.Controls.Add(textBox_AvgPace);
             panel_BackAddWorkout.Controls.Add(textBox_Calories);
             panel_BackAddWorkout.Location = new Point(184, 42);
             panel_BackAddWorkout.Name = "panel_BackAddWorkout";
@@ -156,6 +156,7 @@
             dateTimePicker_StartTime.Format = DateTimePickerFormat.Time;
             dateTimePicker_StartTime.Location = new Point(215, 102);
             dateTimePicker_StartTime.Name = "dateTimePicker_StartTime";
+            dateTimePicker_StartTime.ShowUpDown = true;
             dateTimePicker_StartTime.Size = new Size(106, 23);
             dateTimePicker_StartTime.TabIndex = 8;
             // 
@@ -194,12 +195,12 @@
             label_Date.TabIndex = 14;
             label_Date.Text = "Today's Date:";
             // 
-            // textBox5
+            // textBox_MinHR
             // 
-            textBox5.Location = new Point(33, 422);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(121, 23);
-            textBox5.TabIndex = 6;
+            textBox_MinHR.Location = new Point(33, 422);
+            textBox_MinHR.Name = "textBox_MinHR";
+            textBox_MinHR.Size = new Size(121, 23);
+            textBox_MinHR.TabIndex = 6;
             // 
             // textBox_MaxHR
             // 
@@ -208,12 +209,12 @@
             textBox_MaxHR.Size = new Size(121, 23);
             textBox_MaxHR.TabIndex = 5;
             // 
-            // textBox1
+            // textBox_Distance
             // 
-            textBox1.Location = new Point(33, 294);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(121, 23);
-            textBox1.TabIndex = 4;
+            textBox_Distance.Location = new Point(33, 294);
+            textBox_Distance.Name = "textBox_Distance";
+            textBox_Distance.Size = new Size(121, 23);
+            textBox_Distance.TabIndex = 4;
             // 
             // label_MinHR
             // 
@@ -258,6 +259,7 @@
             comboBox_ExerciseList.Name = "comboBox_ExerciseList";
             comboBox_ExerciseList.Size = new Size(121, 23);
             comboBox_ExerciseList.TabIndex = 0;
+            comboBox_ExerciseList.SelectedIndexChanged += comboBox_ExerciseList_SelectedIndexChanged;
             // 
             // label_AveragePace
             // 
@@ -286,19 +288,19 @@
             label_CaloriesBurned.TabIndex = 3;
             label_CaloriesBurned.Text = "Calories Burned:";
             // 
-            // textBox3
+            // textBox_AvgSpeed
             // 
-            textBox3.Location = new Point(33, 230);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(121, 23);
-            textBox3.TabIndex = 3;
+            textBox_AvgSpeed.Location = new Point(33, 230);
+            textBox_AvgSpeed.Name = "textBox_AvgSpeed";
+            textBox_AvgSpeed.Size = new Size(121, 23);
+            textBox_AvgSpeed.TabIndex = 3;
             // 
-            // textBox2
+            // textBox_AvgPace
             // 
-            textBox2.Location = new Point(33, 166);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(121, 23);
-            textBox2.TabIndex = 2;
+            textBox_AvgPace.Location = new Point(33, 166);
+            textBox_AvgPace.Name = "textBox_AvgPace";
+            textBox_AvgPace.Size = new Size(121, 23);
+            textBox_AvgPace.TabIndex = 2;
             // 
             // textBox_Calories
             // 
@@ -341,12 +343,12 @@
         private Label label_AveragePace;
         private Label label_Exercise;
         private Label label_CaloriesBurned;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox textBox_AvgSpeed;
+        private TextBox textBox_AvgPace;
         private TextBox textBox_Calories;
-        private TextBox textBox5;
+        private TextBox textBox_MinHR;
         private TextBox textBox_MaxHR;
-        private TextBox textBox1;
+        private TextBox textBox_Distance;
         private Label label_MinHR;
         private Label label_MaxHR;
         private Label label_Distance;

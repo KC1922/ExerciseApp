@@ -67,16 +67,22 @@ namespace ExerciseApp
             }
             if (string.Compare(exerciseType, "Cardio") != 0)
             {
-                textBox_AvgPace.Enabled = false;
-                textBox_AvgSpeed.Enabled = false;
-                textBox_Distance.Enabled = false;
+                ToggleTextBoxes(false);
             }
             else
             {
-                textBox_AvgPace.Enabled = true;
-                textBox_AvgSpeed.Enabled = true;
-                textBox_Distance.Enabled = true;
+                ToggleTextBoxes(true);
             }
+        }
+        /// <summary>
+        /// Used to disable or enable certain text boxes.
+        /// </summary>
+        /// <param name="enable"></param>
+        private void ToggleTextBoxes(Boolean enable)
+        {
+            textBox_AvgPace.Enabled = enable;
+            textBox_AvgSpeed.Enabled = enable;
+            textBox_Distance.Enabled = enable;
         }
     }
 }

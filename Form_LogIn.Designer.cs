@@ -103,6 +103,7 @@
             textBox_Password.Size = new Size(100, 23);
             textBox_Password.TabIndex = 1;
             textBox_Password.Click += textBox_Password_Click;
+            textBox_Password.PreviewKeyDown += textBox_Password_PreviewKeyDown;
             // 
             // button_LogIn
             // 

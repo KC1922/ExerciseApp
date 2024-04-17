@@ -72,5 +72,14 @@ namespace ExerciseApp
         {
 
         }
+        /// <summary>
+        /// Lets user log in by pressing Enter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_Password_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter) { button_LogIn.PerformClick(); }    
+        }
     }
 }

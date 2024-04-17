@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
+using System.Transactions;
 
 namespace ExerciseApp
 {
@@ -58,80 +59,100 @@ namespace ExerciseApp
             {
                 connection.Open();
 
-
-                string checkExistingAccount = @"SELECT * FROM users WHERE email = @email";
-
-                // Check for existing account
-                using (NpgsqlCommand checkExistingAccountcommand = new NpgsqlCommand(checkExistingAccount, connection))
+                // Begin a transaction as code inserts values into two tables
+                using (NpgsqlTransaction transaction = connection.BeginTransaction())
                 {
-                    checkExistingAccountcommand.Parameters.AddWithValue("@email", enteredEmail);
-                    NpgsqlDataReader reader = checkExistingAccountcommand.ExecuteReader();
-                    if (reader.Read())
+                    try
                     {
-                        MessageBox.Show("An account with that email already exists!");
-                        reader.Close();
-                        return;
-                    }
-                    reader.Close();
-                }
+                        string checkExistingAccount = @"SELECT * FROM users WHERE email = @email";
 
-                // Insert into Users table
-                string insertUserQuery = @"INSERT INTO Users (email, username, password, fName, lName)
+                        // Check for existing account
+                        using (NpgsqlCommand checkExistingAccountcommand = new NpgsqlCommand(checkExistingAccount, connection))
+                        {
+                            checkExistingAccountcommand.Parameters.AddWithValue("@email", enteredEmail);
+                            NpgsqlDataReader reader = checkExistingAccountcommand.ExecuteReader();
+                            if (reader.Read())
+                            {
+                                MessageBox.Show("An account with that email already exists!");
+                                reader.Close();
+                                return;
+                            }
+                            reader.Close();
+                        }
+
+                        // Insert into Users table
+                        string insertUserQuery = @"INSERT INTO users (email, username, password, fName, lName)
                                    VALUES (@email, @username, @password, @fName, @lName)
-                                   RETURNING userid";
+                                   RETURNING user_id";
 
-                // Execute insert command for Users table
-                int userId;
-                using (NpgsqlCommand command = new NpgsqlCommand(insertUserQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@email", enteredEmail);
-                    command.Parameters.AddWithValue("@username", enteredUsername);
-                    command.Parameters.AddWithValue("@password", enteredPassword);
-                    command.Parameters.AddWithValue("@fName", string.IsNullOrEmpty(enteredfName) ? (object)DBNull.Value : enteredfName);
-                    command.Parameters.AddWithValue("@lName", string.IsNullOrEmpty(enteredlName) ? (object)DBNull.Value : enteredlName);
+                        // Execute insert command for Users table
+                        int userId;
+                        using (NpgsqlCommand command = new NpgsqlCommand(insertUserQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@email", enteredEmail);
+                            command.Parameters.AddWithValue("@username", enteredUsername);
+                            command.Parameters.AddWithValue("@password", enteredPassword);
+                            command.Parameters.AddWithValue("@fName", string.IsNullOrEmpty(enteredfName) ? (object)DBNull.Value : enteredfName);
+                            command.Parameters.AddWithValue("@lName", string.IsNullOrEmpty(enteredlName) ? (object)DBNull.Value : enteredlName);
 
 
 
-                    // Execute the command and retrieve the userid of the newly inserted user
-                    userId = (int)command.ExecuteScalar();
+                            // Execute the command and retrieve the userid of the newly inserted user
+                            userId = (int)command.ExecuteScalar();
 
-                    if (userId == 0)
-                    {
-                        MessageBox.Show("Failed to create user.");
-                        return;
-                    }
+                            if (userId == 0)
+                            {
+                                MessageBox.Show("Failed to create user.");
+                                return;
+                            }
 
-                    // Insert into UserPhysicalDetails table
-                    string insertUserPhysicalDetailsQuery = @"INSERT INTO user_physical_details (user_id, age, gender, height)
+                            // Insert into UserPhysicalDetails table
+                            string insertUserPhysicalDetailsQuery = @"INSERT INTO user_physical_details (user_id, age, gender, height)
                                                        VALUES (@userId, @age, @gender, @height)";
 
-                    // Execute insert command for UserPhysicalDetails table
-                    using (NpgsqlCommand insertUserPhysicalDetailsCommand = new NpgsqlCommand(insertUserPhysicalDetailsQuery, connection))
-                    {
-                        insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@userId", userId);
-                        insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@age", string.IsNullOrEmpty(enteredAge) ? (object)DBNull.Value : int.Parse(enteredAge));
-                        insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@gender", string.IsNullOrEmpty(enteredGender) ? (object)DBNull.Value : enteredGender);
-                        insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@height", string.IsNullOrEmpty(enteredHeight) ? (object)DBNull.Value : decimal.Parse(enteredHeight));
+                            // Execute insert command for UserPhysicalDetails table
+                            using (NpgsqlCommand insertUserPhysicalDetailsCommand = new NpgsqlCommand(insertUserPhysicalDetailsQuery, connection))
+                            {
 
-                        int rowsAffected = insertUserPhysicalDetailsCommand.ExecuteNonQuery();
-                        if (rowsAffected == 0)
-                        {
-                            MessageBox.Show("Failed to insert user physical details.");
-                            return;
+                                insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@userId", userId);
+                                insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@gender", string.IsNullOrEmpty(enteredGender)
+                                                                                                ? (object)DBNull.Value : enteredGender);
+                                // Validate certain inputs to avoid insetion errors
+                                try
+                                {
+                                    insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@age", string.IsNullOrEmpty(enteredAge)
+                                                                                                ? (object)DBNull.Value : int.Parse(enteredAge));
+                                }
+                                catch (FormatException) { throw new Exception("Enter a valid age."); }
+                                try
+                                {
+                                    insertUserPhysicalDetailsCommand.Parameters.AddWithValue("@height", string.IsNullOrEmpty(enteredHeight)
+                                                                                                ? (object)DBNull.Value : decimal.Parse(enteredHeight));
+                                }
+                                catch (FormatException) { throw new Exception("Enter a valid height."); }
+
+                                int rowsAffected = insertUserPhysicalDetailsCommand.ExecuteNonQuery();
+                                if (rowsAffected == 0)
+                                {
+                                    throw new Exception("Failed to insert user physical details.");
+                                }
+                            }
                         }
-                    }
 
-                    // Insert into Weight table (if weight is provided)
-                    if (!string.IsNullOrEmpty(enteredWeight))
-                    {
+                        // Insert into Weight table
                         string insertWeightQuery = @"INSERT INTO weight (user_id, weight, date)
-                                             VALUES (@userId, @weight, CURRENT_TIMESTAMP)";
+                                            VALUES (@userId, @weight, CURRENT_TIMESTAMP)";
 
                         // Execute insert command for Weight table
                         using (NpgsqlCommand insertWeightCommand = new NpgsqlCommand(insertWeightQuery, connection))
                         {
                             insertWeightCommand.Parameters.AddWithValue("@userId", userId);
-                            insertWeightCommand.Parameters.AddWithValue("@weight", decimal.Parse(enteredWeight));
+                            try
+                            {
+                                insertWeightCommand.Parameters.AddWithValue("@weight", string.IsNullOrEmpty(enteredWeight)
+                                                                                               ? (object)DBNull.Value : decimal.Parse(enteredHeight));
+                            }
+                            catch (FormatException) { throw new Exception("Enter a valid weight."); }
 
                             int rowsAffected = insertWeightCommand.ExecuteNonQuery();
                             if (rowsAffected == 0)
@@ -140,9 +161,20 @@ namespace ExerciseApp
                                 return;
                             }
                         }
+
+                        // Commit the transaction if all operations succeed
+                        transaction.Commit();
+                        MessageBox.Show("Account created successfully!");
                     }
-                }
-                MessageBox.Show("Account created successfully!");
+                    catch (Exception ex)
+                    {
+                        // Rollback the transaction if an exception occurs during any operation
+                        transaction.Rollback();
+                        MessageBox.Show("Error creating account: " + ex.Message);
+                        return;
+                    }     
+
+                }     
 
             }
             this.Close();

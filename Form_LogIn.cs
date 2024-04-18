@@ -1,5 +1,7 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
 using System.Configuration;
+using System.Data;
 
 namespace ExerciseApp
 {
@@ -38,12 +40,13 @@ namespace ExerciseApp
             {
                 connection.Open();
 
-                string query_findUser = "SELECT * FROM users WHERE username = @username AND password = @password";
-
+                string query_findUser = "SELECT user_id FROM users WHERE username = @username AND password = @password";
+                int userId;
                 using (NpgsqlCommand command = new NpgsqlCommand(query_findUser, connection))
                 {
                     command.Parameters.AddWithValue("@username", enteredUsername);
                     command.Parameters.AddWithValue("@password", enteredPassword);
+
                     NpgsqlDataReader reader = command.ExecuteReader();
 
                     if (reader.Read())

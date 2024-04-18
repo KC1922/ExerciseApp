@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+  <!--
     Microsoft ResX Schema 
-    
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,4 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="imageList_AppMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="imageList_AppMain.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
+        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
+        SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAmAUAAAJNU0Z0AUkBTAMBAQAB
+        QAEAAUABAAEZAQABGQEABP8BIQEACP8BQgFNATYHAAE2AwABKAMAAWQDAAEZAwABAQEAASAFAAEQASce
+        AAMhATADXQHEA6QB8QOrAfMDqwHzA6sB8wOAAeUDDgESDAADBAEFA3AB2wOrAfMDqwHzA6sB8wOoAfID
+        YgHMAykBPv8AQQADCAEKA4IB5wNxAdwDSQGGA0gBgwNIAYMDVgGrBP8DGgEkDAADCQEMBP8DWgG3A0gB
+        gwNIAYMDSAGEA2UB0gOoAfIDEgEX/wA9AAMqAT8E/wMqAUAMAAMzAVIE/wMaASQMAAMJAQwE/wM+AWsM
+        AAMdASgE/wM2AVf/AD0AAy4BRgT/AyIBMQwAAzMBUgT/AxoBJAwAAwkBDAT/Az4BawwAAxIBGAT/AzkB
+        Xv8APQADLgFGBP8DIgExDAADMwFSBP8DGgEkDAADCQEMBP8DPgFrDAADEgEYBP8DOQFe/wA9AAMuAUYE
+        /wMiATEMAAMzAVIE/wMaASQMAAMJAQwE/wM+AWsMAAMSARgE/wM5AV7/AD0AAy4BRgT/AyIBMQwAAzMB
+        UQT/AxsBJQwAAwoBDQT/Az4BagwAAxIBGAT/AzkBXv8APQADLgFGBP8DIgExDAADHwEsBP8DSwGLAxYB
+        HQMUARsDFQEcA0QBdwT/Ay0BRAwAAxIBGAT/AzkBXv8APQADLgFGBP8DIgExEAADTAGOFP8DUwGlBAEM
+        AAMSARgE/wM5AV7/AD0AAy4BRgT/AyIBMRQAAyIBMQM3AVoDOAFbAzgBWwMnATkUAAMSARgE/wM5AV7/
+        ADUAAwwBDwNMAZADZQHQBP8DIgExPAADEgEYBP8DagHXA1ABmgMSARj/AC0AA1YBqwO2AfYDWQG4A1YB
+        qwMMAQ88AAMEAQUDUgGkA1kBtgOkAfEDXgHD/wAtAAOWAe0DTQGRVAADRAF5BP//AC0AA1kBuAOWAe0D
+        IgExTAADGgEjA3kB4gNlAdD/AC0AAxMBGgNqAdkDjwHsAyIBMUQAAxoBIwN5AeIDgAHlAxsBJv8AMQAD
+        EwEaA2oB2QOPAewDIgExPAADGgEjA3kB4gOAAeUDHAEn/wA5AAMUARsDagHZA48B7AMiATE0AAMaASMD
+        eQHiA4AB5QMcASf/AEEAAxMBGgNqAdkDjwHsAyIBMSwAAxoBIwN5AeIDgAHlAxwBJ/8ASQADEwEaA2oB
+        2QOPAewDIgExJAADGgEjA3kB4gOAAeUDHAEn/wBRAAMTARoDagHZA48B7AMiATEcAAMaASMDeQHiA4AB
+        5QMcASf/AFkAAxMBGgNqAdkDjwHsAyIBMRQAAxoBIwN5AeIDgAHlAxwBJ/8AYQADEwEaA2oB2QOPAewD
+        IgExDAADGgEjA3kB4gOAAeUDHAEn/wBpAAMTARoDagHZA48B7AMiATEEAAMaASMDeQHiA4AB5QMcASf/
+        AHEAAxMBGgNqAdkDjwHsA0QBeAN5AeIDgAHlAxwBJ/8AeQADEwEaA10BxAT/A2UB0AMbASb/AFUAAUIB
+        TQE+BwABPgMAASgDAAFkAwABGQMAAQEBAAEBBQABkAEBFgAD/wEAAeABHAEDAYAMAAHAARwBAQGADAAB
+        xwEcAXEBgAwAAccBHAFxAYAMAAHHARwBcQGADAABxwEcAXEBgAwAAccBHAFxAYAMAAHHAQABcQGADAAB
+        xwGAAXEBgAwAAccBwQHxAYAMAAEHAf8B8A0AAQcB/wHwDQABPwH/Af4NAAEfAf8B/A0AAQ8B/wH4DQAB
+        hwH/AfABgAwAAcMB/wHhAYAMAAHhAf8BwwGADAAB8AH/AYcBgAwAAfgBfwEPAYAMAAH8AT4BHwGADAAB
+        /gEcAT8BgAwAAf8BCAF/AYAMAAH/AYAB/wGADAAB/wHBAf8BgAwACw==
+</value>
+  </data>
 </root>

@@ -53,8 +53,10 @@ namespace ExerciseApp
 
                     if (reader.Read())
                     {
-                        Form_HomeWindow form_HomeWindow = new Form_HomeWindow(enteredUsername);
-                        form_HomeWindow.Show();
+                        //Form_HomeWindow form_HomeWindow = new Form_HomeWindow(enteredUsername);
+                        //form_HomeWindow.Show();
+                        Form_AppMain form_AppMain = new Form_AppMain();
+                        form_AppMain.Show();
                         this.Hide();
                     }
                     else

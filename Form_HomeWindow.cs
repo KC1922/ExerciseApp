@@ -15,9 +15,10 @@ namespace ExerciseApp
     public partial class Form_HomeWindow : Form
     {
         string dbConnection = ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
-        public Form_HomeWindow()
+        public Form_HomeWindow(string userName)
         {
             InitializeComponent();
+            label_Welcome.Text = "Welcome back " + userName;
         }
 
         private void button_AddWorkout_Click(object sender, EventArgs e)
@@ -43,6 +44,7 @@ namespace ExerciseApp
                     comboBox_ExerciseList.DisplayMember = "exercise_name";
                 }
             }
+
         }
 
         private void Form_HomeWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -83,6 +85,11 @@ namespace ExerciseApp
             textBox_AvgPace.Enabled = enable;
             textBox_AvgSpeed.Enabled = enable;
             textBox_Distance.Enabled = enable;
+        }
+
+        private void button_Add_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

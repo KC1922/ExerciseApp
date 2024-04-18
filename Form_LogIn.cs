@@ -48,7 +48,7 @@ namespace ExerciseApp
 
                     if (reader.Read())
                     {
-                        Form_HomeWindow form_HomeWindow = new Form_HomeWindow();
+                        Form_HomeWindow form_HomeWindow = new Form_HomeWindow(enteredUsername);
                         form_HomeWindow.Show();
                         this.Hide();
                     }

@@ -33,9 +33,11 @@
             label_Welcome = new Label();
             panel_Top = new Panel();
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             button_AddWorkout = new Button();
             imageList1 = new ImageList(components);
             panel_BackAddWorkout = new Panel();
+            button_Add = new Button();
             dateTimePicker_Duration = new DateTimePicker();
             dateTimePicker_StartTime = new DateTimePicker();
             dateTimePicker_Date = new DateTimePicker();
@@ -56,49 +58,68 @@
             textBox_AvgSpeed = new TextBox();
             textBox_AvgPace = new TextBox();
             textBox_Calories = new TextBox();
+            panel2 = new Panel();
+            pictureBox2 = new PictureBox();
             panel_Top.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel_BackAddWorkout.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label_Welcome
             // 
             label_Welcome.AutoSize = true;
-            label_Welcome.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label_Welcome.Location = new Point(12, 9);
+            label_Welcome.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label_Welcome.ForeColor = Color.FromArgb(152, 95, 153);
+            label_Welcome.Location = new Point(11, 9);
             label_Welcome.Name = "label_Welcome";
-            label_Welcome.Size = new Size(235, 24);
+            label_Welcome.Size = new Size(234, 25);
             label_Welcome.TabIndex = 0;
             label_Welcome.Text = "Welcome back User   ";
             // 
             // panel_Top
             // 
-            panel_Top.BackColor = Color.LightBlue;
+            panel_Top.BackColor = Color.WhiteSmoke;
             panel_Top.Controls.Add(label_Welcome);
-            panel_Top.Location = new Point(0, 0);
+            panel_Top.Location = new Point(184, 0);
             panel_Top.Name = "panel_Top";
-            panel_Top.Size = new Size(824, 42);
+            panel_Top.Size = new Size(640, 42);
             panel_Top.TabIndex = 1;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(2, 138, 157);
-            panel1.Controls.Add(button_AddWorkout);
-            panel1.Location = new Point(0, 42);
+            panel1.BackColor = Color.FromArgb(73, 163, 215);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(189, 543);
+            panel1.Size = new Size(189, 585);
             panel1.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(73, 163, 215);
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(152, 64);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // button_AddWorkout
             // 
-            button_AddWorkout.BackColor = Color.WhiteSmoke;
-            button_AddWorkout.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button_AddWorkout.BackColor = Color.FromArgb(55, 142, 191);
+            button_AddWorkout.FlatAppearance.BorderSize = 0;
+            button_AddWorkout.FlatStyle = FlatStyle.Flat;
+            button_AddWorkout.Font = new Font("Archivo Black", 11.999999F, FontStyle.Regular, GraphicsUnit.Point);
             button_AddWorkout.ImageAlign = ContentAlignment.MiddleLeft;
-            button_AddWorkout.ImageIndex = 0;
             button_AddWorkout.ImageList = imageList1;
-            button_AddWorkout.Location = new Point(12, 6);
+            button_AddWorkout.Location = new Point(33, 1);
             button_AddWorkout.Name = "button_AddWorkout";
-            button_AddWorkout.Size = new Size(166, 69);
+            button_AddWorkout.Size = new Size(145, 40);
             button_AddWorkout.TabIndex = 0;
             button_AddWorkout.Text = "Add Workout";
             button_AddWorkout.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -114,7 +135,8 @@
             // 
             // panel_BackAddWorkout
             // 
-            panel_BackAddWorkout.BackColor = Color.FromArgb(215, 244, 253);
+            panel_BackAddWorkout.BackColor = Color.FromArgb(233, 241, 247);
+            panel_BackAddWorkout.Controls.Add(button_Add);
             panel_BackAddWorkout.Controls.Add(dateTimePicker_Duration);
             panel_BackAddWorkout.Controls.Add(dateTimePicker_StartTime);
             panel_BackAddWorkout.Controls.Add(dateTimePicker_Date);
@@ -139,6 +161,19 @@
             panel_BackAddWorkout.Name = "panel_BackAddWorkout";
             panel_BackAddWorkout.Size = new Size(637, 543);
             panel_BackAddWorkout.TabIndex = 3;
+            // 
+            // button_Add
+            // 
+            button_Add.BackColor = Color.FromArgb(152, 95, 153);
+            button_Add.FlatAppearance.BorderColor = Color.White;
+            button_Add.FlatStyle = FlatStyle.Popup;
+            button_Add.Location = new Point(215, 223);
+            button_Add.Name = "button_Add";
+            button_Add.Size = new Size(106, 30);
+            button_Add.TabIndex = 17;
+            button_Add.Text = "Add to Log";
+            button_Add.UseVisualStyleBackColor = false;
+            button_Add.Click += button_Add_Click;
             // 
             // dateTimePicker_Duration
             // 
@@ -309,15 +344,36 @@
             textBox_Calories.Size = new Size(121, 23);
             textBox_Calories.TabIndex = 1;
             // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(55, 142, 191);
+            panel2.Controls.Add(pictureBox2);
+            panel2.Controls.Add(button_AddWorkout);
+            panel2.Location = new Point(0, 82);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(200, 42);
+            panel2.TabIndex = 1;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(8, 6);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(33, 33);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            // 
             // Form_HomeWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(821, 584);
-            Controls.Add(panel1);
-            Controls.Add(panel_BackAddWorkout);
             Controls.Add(panel_Top);
+            Controls.Add(panel_BackAddWorkout);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Name = "Form_HomeWindow";
             Text = "Form1";
             FormClosing += Form_HomeWindow_FormClosing;
@@ -325,8 +381,11 @@
             panel_Top.ResumeLayout(false);
             panel_Top.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel_BackAddWorkout.ResumeLayout(false);
             panel_BackAddWorkout.PerformLayout();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -358,5 +417,9 @@
         private Label label_StartTime;
         private Label label_Date;
         private DateTimePicker dateTimePicker_Duration;
+        private Button button_Add;
+        private Panel panel2;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

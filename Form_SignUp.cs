@@ -94,15 +94,12 @@ namespace ExerciseApp
                             command.Parameters.AddWithValue("@fName", string.IsNullOrEmpty(enteredfName) ? (object)DBNull.Value : enteredfName);
                             command.Parameters.AddWithValue("@lName", string.IsNullOrEmpty(enteredlName) ? (object)DBNull.Value : enteredlName);
 
-
-
                             // Execute the command and retrieve the userid of the newly inserted user
                             userId = (int)command.ExecuteScalar();
 
                             if (userId == 0)
                             {
-                                MessageBox.Show("Failed to create user.");
-                                return;
+                                throw new Exception("Failed to add user information.");
                             }
 
                             // Insert into UserPhysicalDetails table
@@ -133,7 +130,7 @@ namespace ExerciseApp
                                 int rowsAffected = insertUserPhysicalDetailsCommand.ExecuteNonQuery();
                                 if (rowsAffected == 0)
                                 {
-                                    throw new Exception("Failed to insert user physical details.");
+                                    throw new Exception("Failed to add user physical details.");
                                 }
                             }
                         }

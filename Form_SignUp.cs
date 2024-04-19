@@ -168,9 +168,9 @@ namespace ExerciseApp
                         transaction.Rollback();
                         MessageBox.Show("Error creating account: " + ex.Message);
                         return;
-                    }     
+                    }
 
-                }     
+                }
 
             }
             this.Close();

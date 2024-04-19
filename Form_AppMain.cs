@@ -16,10 +16,15 @@ namespace ExerciseApp
         private Button currentButton;
         private Color highlight = Color.FromArgb(198, 52, 149);
         private Form activeForm;
+        private string username;
+        private int userId;
 
-        public Form_AppMain()
+        public Form_AppMain(string username, int userId)
         {
             InitializeComponent();
+            this.username = username;
+            this.userId = userId;
+            label_TabTitle.Text = "Welcome Back " + username;
         }
 
         /// <summary>
@@ -61,12 +66,12 @@ namespace ExerciseApp
 
         private void button_AddWorkout_Click(object sender, EventArgs e)
         {
-            OpenChildForms(new AppMain_ChildForms.Form_AddWorkout(), sender);
+            OpenChildForms(new AppMain_ChildForms.Form_AddWorkout(userId), sender);
         }
 
         private void button_Calories_Click(object sender, EventArgs e)
         {
-           OpenChildForms(new AppMain_ChildForms.Form_CalorieTracker(), sender);    
+            OpenChildForms(new AppMain_ChildForms.Form_CalorieTracker(), sender);
         }
 
         private void button_Trends_Click(object sender, EventArgs e)
@@ -104,7 +109,7 @@ namespace ExerciseApp
             childForm.BringToFront();
             childForm.Show();
 
-            label_TabTitle.Text = childForm.Text;
+            label_TabTitle.Text = childForm.Text.ToUpper();
 
         }
     }

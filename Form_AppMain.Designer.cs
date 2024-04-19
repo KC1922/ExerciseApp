@@ -69,7 +69,7 @@
             button_Trends.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             button_Trends.ForeColor = Color.White;
             button_Trends.ImageAlign = ContentAlignment.MiddleLeft;
-            button_Trends.ImageIndex = 0;
+            button_Trends.ImageIndex = 2;
             button_Trends.ImageList = imageList_AppMain;
             button_Trends.Location = new Point(0, 241);
             button_Trends.Name = "button_Trends";
@@ -86,7 +86,10 @@
             imageList_AppMain.ColorDepth = ColorDepth.Depth32Bit;
             imageList_AppMain.ImageStream = (ImageListStreamer)resources.GetObject("imageList_AppMain.ImageStream");
             imageList_AppMain.TransparentColor = Color.Transparent;
-            imageList_AppMain.Images.SetKeyName(0, "Freepik_home.png");
+            imageList_AppMain.Images.SetKeyName(0, "Dave_Gandy_home.png");
+            imageList_AppMain.Images.SetKeyName(1, "Freepik_calories.png");
+            imageList_AppMain.Images.SetKeyName(2, "nawicon_report.png");
+            imageList_AppMain.Images.SetKeyName(3, "Smashicons_person.png");
             // 
             // button_Calories
             // 
@@ -97,7 +100,7 @@
             button_Calories.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             button_Calories.ForeColor = Color.White;
             button_Calories.ImageAlign = ContentAlignment.MiddleLeft;
-            button_Calories.ImageIndex = 0;
+            button_Calories.ImageIndex = 1;
             button_Calories.ImageList = imageList_AppMain;
             button_Calories.Location = new Point(0, 184);
             button_Calories.Name = "button_Calories";
@@ -118,7 +121,7 @@
             button_AddWorkout.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             button_AddWorkout.ForeColor = Color.White;
             button_AddWorkout.ImageAlign = ContentAlignment.MiddleLeft;
-            button_AddWorkout.ImageIndex = 0;
+            button_AddWorkout.ImageIndex = 3;
             button_AddWorkout.ImageList = imageList_AppMain;
             button_AddWorkout.Location = new Point(0, 127);
             button_AddWorkout.Name = "button_AddWorkout";
@@ -162,15 +165,16 @@
             // 
             // label_Title
             // 
-            label_Title.AutoSize = true;
             label_Title.BackColor = Color.Transparent;
+            label_Title.Dock = DockStyle.Fill;
             label_Title.Font = new Font("Century Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             label_Title.ForeColor = Color.White;
-            label_Title.Location = new Point(12, 16);
+            label_Title.Location = new Point(0, 0);
             label_Title.Name = "label_Title";
-            label_Title.Size = new Size(150, 36);
+            label_Title.Size = new Size(181, 70);
             label_Title.TabIndex = 0;
             label_Title.Text = "MyFitness";
+            label_Title.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel_UpperBar
             // 
@@ -184,15 +188,16 @@
             // 
             // label_TabTitle
             // 
-            label_TabTitle.AutoSize = true;
             label_TabTitle.BackColor = Color.Transparent;
+            label_TabTitle.Dock = DockStyle.Fill;
             label_TabTitle.Font = new Font("Century Gothic", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             label_TabTitle.ForeColor = Color.White;
-            label_TabTitle.Location = new Point(301, 18);
+            label_TabTitle.Location = new Point(0, 0);
             label_TabTitle.Name = "label_TabTitle";
-            label_TabTitle.Size = new Size(93, 32);
+            label_TabTitle.Size = new Size(723, 70);
             label_TabTitle.TabIndex = 0;
-            label_TabTitle.Text = "HOME";
+            label_TabTitle.Text = "Welcome Back User";
+            label_TabTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel_TabForms
             // 
@@ -211,13 +216,11 @@
             Controls.Add(panel_UpperBar);
             Controls.Add(panel_SideBar);
             Name = "Form_AppMain";
-            Text = "Form_AppMain";
+            Text = "MyFitness";
             FormClosed += Form_AppMain_FormClosed;
             panel_SideBar.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel_UpperBar.ResumeLayout(false);
-            panel_UpperBar.PerformLayout();
             ResumeLayout(false);
         }
 

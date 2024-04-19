@@ -13,7 +13,6 @@ namespace ExerciseApp
         public Form_LogIn()
         {
             InitializeComponent();
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
         private void Form_LogIn_Load(object sender, EventArgs e)
@@ -55,7 +54,8 @@ namespace ExerciseApp
                     {
                         //Form_HomeWindow form_HomeWindow = new Form_HomeWindow(enteredUsername);
                         //form_HomeWindow.Show();
-                        Form_AppMain form_AppMain = new Form_AppMain();
+                        userId = reader.GetInt32(0);
+                        Form_AppMain form_AppMain = new Form_AppMain(enteredUsername, userId);
                         form_AppMain.Show();
                         this.Hide();
                     }
@@ -94,7 +94,7 @@ namespace ExerciseApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        private void label_Title_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -110,28 +110,6 @@ namespace ExerciseApp
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        // Code to allow window resizing with mouse
-        private const int cGrip = 16;
-        private const int cCaption = 32;
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x84)
-            {
-                Point pos = new Point(m.LParam.ToInt32());
-                pos = this.PointToClient(pos);
-                if (pos.Y < cCaption)
-                {
-                    m.Result = (IntPtr)2;
-                    return;
-                }
 
-                if (pos.X >= this.ClientSize.Width - cGrip && pos.Y >= this.ClientSize.Height - cGrip)
-                {
-                    m.Result = (IntPtr)17;
-                    return;
-                }
-            }
-            base.WndProc(ref m);
-        }
     }
 }

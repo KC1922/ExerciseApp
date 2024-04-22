@@ -227,6 +227,7 @@
             textBox_Weight.Name = "textBox_Weight";
             textBox_Weight.Size = new Size(75, 22);
             textBox_Weight.TabIndex = 6;
+            textBox_Weight.TextAlign = HorizontalAlignment.Right;
             // 
             // textBox_Height
             // 
@@ -235,6 +236,7 @@
             textBox_Height.Name = "textBox_Height";
             textBox_Height.Size = new Size(75, 22);
             textBox_Height.TabIndex = 7;
+            textBox_Height.TextAlign = HorizontalAlignment.Right;
             // 
             // textBox_Age
             // 
@@ -243,6 +245,7 @@
             textBox_Age.Name = "textBox_Age";
             textBox_Age.Size = new Size(75, 22);
             textBox_Age.TabIndex = 8;
+            textBox_Age.TextAlign = HorizontalAlignment.Right;
             // 
             // label_Weight
             // 

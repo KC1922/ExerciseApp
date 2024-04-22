@@ -153,8 +153,7 @@ namespace ExerciseApp
                             int rowsAffected = insertWeightCommand.ExecuteNonQuery();
                             if (rowsAffected == 0)
                             {
-                                MessageBox.Show("Failed to insert weight.");
-                                return;
+                                throw new Exception("Failed to insert weight.");
                             }
                         }
 

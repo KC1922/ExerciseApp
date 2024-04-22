@@ -35,13 +35,13 @@
             textBox_Username = new TextBox();
             textBox_Password = new TextBox();
             button_LogIn = new Button();
-            panel1 = new Panel();
+            panel_Title = new Panel();
             metroSetControlBox_LogIn = new MetroSet_UI.Controls.MetroSetControlBox();
             label_Title = new Label();
             metroSetContextMenuStrip1 = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
             panel_UsernameLine = new Panel();
             panel_PasswordLine = new Panel();
-            panel1.SuspendLayout();
+            panel_Title.SuspendLayout();
             SuspendLayout();
             // 
             // label_Username
@@ -129,17 +129,16 @@
             button_LogIn.UseVisualStyleBackColor = false;
             button_LogIn.Click += button_LogIn_Click;
             // 
-            // panel1
+            // panel_Title
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(31, 35, 33);
-            panel1.Controls.Add(metroSetControlBox_LogIn);
-            panel1.Controls.Add(label_Title);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(399, 75);
-            panel1.TabIndex = 5;
-            panel1.MouseDown += panel1_MouseDown;
+            panel_Title.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel_Title.BackColor = Color.FromArgb(31, 35, 33);
+            panel_Title.Controls.Add(metroSetControlBox_LogIn);
+            panel_Title.Controls.Add(label_Title);
+            panel_Title.Location = new Point(0, 0);
+            panel_Title.Name = "panel_Title";
+            panel_Title.Size = new Size(399, 75);
+            panel_Title.TabIndex = 5;
             // 
             // metroSetControlBox_LogIn
             // 
@@ -214,7 +213,7 @@
             ClientSize = new Size(399, 299);
             Controls.Add(panel_PasswordLine);
             Controls.Add(panel_UsernameLine);
-            Controls.Add(panel1);
+            Controls.Add(panel_Title);
             Controls.Add(linkLabel_Signup);
             Controls.Add(button_LogIn);
             Controls.Add(textBox_Password);
@@ -227,7 +226,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Log In";
             Load += Form_LogIn_Load;
-            panel1.ResumeLayout(false);
+            panel_Title.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -240,7 +239,7 @@
         private TextBox textBox_Username;
         private TextBox textBox_Password;
         private Button button_LogIn;
-        private Panel panel1;
+        private Panel panel_Title;
         private Label label_Title;
         private MetroSet_UI.Controls.MetroSetContextMenuStrip metroSetContextMenuStrip1;
         private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox_LogIn;

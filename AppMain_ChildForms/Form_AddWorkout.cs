@@ -1,16 +1,6 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Npgsql;
 using System.Configuration;
 using System.Data;
-using System.Data.Common;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 
 namespace ExerciseApp.AppMain_ChildForms
@@ -76,23 +66,34 @@ namespace ExerciseApp.AppMain_ChildForms
         /// <param name="enable"></param>
         private void ToggleTextBoxes(Boolean enable)
         {
-            textBox_AvgPace.Enabled = enable;
+            dateTimePicker_avgPace.Enabled = enable;
             textBox_AvgSpeed.Enabled = enable;
             textBox_Distance.Enabled = enable;
         }
+        /// <summary>
+        /// Changes textbox color
+        /// </summary>
+        /// <param name="color"></param>
+        private void ChangeTextBoxColor(Color color)
+        {
+            dateTimePicker_avgPace.BackColor = color;
+            textBox_AvgSpeed.BackColor = color;
+            textBox_Distance.BackColor = color;
+        }
+
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-            int exercise = comboBox_ExerciseList.SelectedIndex;
+            int exercise = comboBox_ExerciseList.SelectedIndex + 1; //Add one since database is offset by 1 compared to combobox index
             string calories = textBox_Calories.Text;
-            string avgPace = textBox_AvgPace.Text;
+            DateTime avgPace = dateTimePicker_avgPace.Value;
             string distance = textBox_Distance.Text;
             string avgSpeed = textBox_AvgSpeed.Text;
             string maxHr = textBox_MaxHR.Text;
             string minHr = textBox_MinHR.Text;
-            string date = dateTimePicker_Date.Text;
-            string startTime = dateTimePicker_StartTime.Text;
-            string duration = dateTimePicker_Duration.Text;
+            DateTime date = dateTimePicker_Date.Value;
+            DateTime startTime = dateTimePicker_StartTime.Value;
+            DateTime duration = dateTimePicker_Duration.Value;
 
             using (NpgsqlConnection connection = new NpgsqlConnection(dbConnection))
             {
@@ -104,21 +105,22 @@ namespace ExerciseApp.AppMain_ChildForms
                 {
                     try
                     {
-                        string insertWorkoutQuery = @"INSERT INTO workouts (user_id, exercise_id, calories_burned, max_hr, min_hr, distance, avg_pace, avg_speed)
-                                   VALUES (@userId, @exercise, @calories_burned, @max_hr, @min_hr, @distance, @avg_pace, @avg_speed)
+                        string insertWorkoutQuery = @"INSERT INTO workouts (user_id, exercise_id, calories_burned, max_hr, min_hr, distance, avg_speed, avg_pace)
+                                   VALUES (@user_id, @exercise, @calories_burned, @max_hr, @min_hr, @distance, @avg_speed, @avg_pace)
                                    RETURNING workout_id";
 
                         int workout_id;
 
                         using (NpgsqlCommand command = new NpgsqlCommand(insertWorkoutQuery, connection))
                         {
+                            command.Parameters.AddWithValue("@user_id", userId);
                             command.Parameters.AddWithValue("@exercise", exercise);
                             command.Parameters.AddWithValue("@calories_burned", string.IsNullOrEmpty(calories) ? 0 : int.Parse(calories));
                             command.Parameters.AddWithValue("@max_hr", string.IsNullOrEmpty(maxHr) ? 0 : int.Parse(maxHr));
-                            command.Parameters.AddWithValue("@min_hr", string.IsNullOrEmpty(minHr) ? 0 : int.Parse(maxHr));
-                            command.Parameters.AddWithValue("@distance", string.IsNullOrEmpty(distance) ? 0 : int.Parse(maxHr));
-                            command.Parameters.AddWithValue("@avg_pace", string.IsNullOrEmpty(avgPace) ? 0 : int.Parse(maxHr));
-                            command.Parameters.AddWithValue("@avg_speed", string.IsNullOrEmpty(avgSpeed) ? 0 : int.Parse(maxHr));
+                            command.Parameters.AddWithValue("@min_hr", string.IsNullOrEmpty(minHr) ? 0 : int.Parse(minHr));
+                            command.Parameters.AddWithValue("@distance", string.IsNullOrEmpty(distance) ? 0 : int.Parse(distance));
+                            command.Parameters.AddWithValue("@avg_pace", avgPace);
+                            command.Parameters.AddWithValue("@avg_speed", string.IsNullOrEmpty(avgSpeed) ? 0 : int.Parse(avgSpeed));
 
                             // Execute the command and retrieve the userid of the newly inserted user
                             workout_id = (int)command.ExecuteScalar();
@@ -131,7 +133,7 @@ namespace ExerciseApp.AppMain_ChildForms
                             // Insert into UserPhysicalDetails table
                             string insertTimingQuery = @"INSERT INTO timing (workout_id, date, start_time, duration)
                                                        VALUES (@workout_id, @date, @start_time, @duration)";
-                            using (NpgsqlCommand commandInsertTimingQuery = new NpgsqlCommand(insertWorkoutQuery, connection))
+                            using (NpgsqlCommand commandInsertTimingQuery = new NpgsqlCommand(insertTimingQuery, connection))
                             {
                                 commandInsertTimingQuery.Parameters.AddWithValue("@workout_id", workout_id);
                                 commandInsertTimingQuery.Parameters.AddWithValue("@date", date);
@@ -141,18 +143,28 @@ namespace ExerciseApp.AppMain_ChildForms
                                     commandInsertTimingQuery.Parameters.AddWithValue("@duration", duration);
                                 }
                                 catch (FormatException) { throw new Exception("Enter a valid duration."); }
+
+                                int rowsAffected = commandInsertTimingQuery.ExecuteNonQuery();
+                                if (rowsAffected == 0)
+                                {
+                                    throw new Exception("Failed to insert timings.");
+                                }
+
                             }
                         }
                         transaction.Commit();
                         MessageBox.Show("Workout added.");
                     }
-                    catch (Exception ex)
+                    catch (PostgresException ex)
                     {
                         transaction.Rollback();
-                        MessageBox.Show("Error adding workout: " + ex.Message);
+                        //MessageBox.Show("Error adding workout: " + ex.Message);
+                        MessageBox.Show($"PostgreSQL Error: {ex.SqlState} - {ex.Message}");
                     }
                 }
             }
         }
+
+
     }
 }

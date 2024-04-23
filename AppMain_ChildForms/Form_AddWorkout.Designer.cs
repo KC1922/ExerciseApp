@@ -58,9 +58,9 @@
             button_Add.FlatStyle = FlatStyle.Flat;
             button_Add.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button_Add.ForeColor = Color.White;
-            button_Add.Location = new Point(380, 288);
+            button_Add.Location = new Point(113, 342);
             button_Add.Name = "button_Add";
-            button_Add.Size = new Size(199, 88);
+            button_Add.Size = new Size(472, 82);
             button_Add.TabIndex = 38;
             button_Add.Text = "Add to Log";
             button_Add.UseVisualStyleBackColor = false;
@@ -71,7 +71,7 @@
             dateTimePicker_Duration.CustomFormat = "HH:mm:ss";
             dateTimePicker_Duration.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker_Duration.Format = DateTimePickerFormat.Custom;
-            dateTimePicker_Duration.Location = new Point(479, 215);
+            dateTimePicker_Duration.Location = new Point(475, 290);
             dateTimePicker_Duration.Name = "dateTimePicker_Duration";
             dateTimePicker_Duration.ShowUpDown = true;
             dateTimePicker_Duration.Size = new Size(100, 22);
@@ -82,7 +82,7 @@
             // 
             dateTimePicker_StartTime.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker_StartTime.Format = DateTimePickerFormat.Time;
-            dateTimePicker_StartTime.Location = new Point(479, 145);
+            dateTimePicker_StartTime.Location = new Point(475, 220);
             dateTimePicker_StartTime.Name = "dateTimePicker_StartTime";
             dateTimePicker_StartTime.ShowUpDown = true;
             dateTimePicker_StartTime.Size = new Size(100, 22);
@@ -92,7 +92,7 @@
             // 
             dateTimePicker_Date.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker_Date.Format = DateTimePickerFormat.Short;
-            dateTimePicker_Date.Location = new Point(479, 73);
+            dateTimePicker_Date.Location = new Point(475, 148);
             dateTimePicker_Date.Name = "dateTimePicker_Date";
             dateTimePicker_Date.Size = new Size(100, 22);
             dateTimePicker_Date.TabIndex = 28;
@@ -100,9 +100,10 @@
             // label_Duration
             // 
             label_Duration.AutoSize = true;
+            label_Duration.FlatStyle = FlatStyle.Flat;
             label_Duration.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_Duration.ForeColor = Color.FromArgb(139, 58, 112);
-            label_Duration.Location = new Point(479, 186);
+            label_Duration.Location = new Point(472, 261);
             label_Duration.Name = "label_Duration";
             label_Duration.Size = new Size(62, 17);
             label_Duration.TabIndex = 37;
@@ -111,9 +112,10 @@
             // label_StartTime
             // 
             label_StartTime.AutoSize = true;
+            label_StartTime.FlatStyle = FlatStyle.Flat;
             label_StartTime.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_StartTime.ForeColor = Color.FromArgb(139, 58, 112);
-            label_StartTime.Location = new Point(479, 114);
+            label_StartTime.Location = new Point(472, 189);
             label_StartTime.Name = "label_StartTime";
             label_StartTime.Size = new Size(70, 17);
             label_StartTime.TabIndex = 36;
@@ -122,19 +124,21 @@
             // label_Date
             // 
             label_Date.AutoSize = true;
+            label_Date.FlatStyle = FlatStyle.Flat;
             label_Date.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_Date.ForeColor = Color.FromArgb(139, 58, 112);
-            label_Date.Location = new Point(479, 41);
+            label_Date.Location = new Point(472, 116);
             label_Date.Name = "label_Date";
-            label_Date.Size = new Size(86, 17);
+            label_Date.Size = new Size(110, 17);
             label_Date.TabIndex = 35;
-            label_Date.Text = "Today's Date:";
+            label_Date.Text = "Date of Workout:";
             // 
             // textBox_MinHR
             // 
             textBox_MinHR.BorderStyle = BorderStyle.None;
             textBox_MinHR.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_MinHR.Location = new Point(303, 146);
+            textBox_MinHR.Location = new Point(299, 221);
+            textBox_MinHR.MaxLength = 100;
             textBox_MinHR.Name = "textBox_MinHR";
             textBox_MinHR.Size = new Size(120, 15);
             textBox_MinHR.TabIndex = 27;
@@ -143,7 +147,8 @@
             // 
             textBox_MaxHR.BorderStyle = BorderStyle.None;
             textBox_MaxHR.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_MaxHR.Location = new Point(303, 73);
+            textBox_MaxHR.Location = new Point(299, 148);
+            textBox_MaxHR.MaxLength = 100;
             textBox_MaxHR.Name = "textBox_MaxHR";
             textBox_MaxHR.Size = new Size(120, 15);
             textBox_MaxHR.TabIndex = 25;
@@ -151,9 +156,10 @@
             // label_MinHR
             // 
             label_MinHR.AutoSize = true;
+            label_MinHR.FlatStyle = FlatStyle.Flat;
             label_MinHR.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_MinHR.ForeColor = Color.FromArgb(139, 58, 112);
-            label_MinHR.Location = new Point(303, 114);
+            label_MinHR.Location = new Point(296, 189);
             label_MinHR.Name = "label_MinHR";
             label_MinHR.Size = new Size(131, 17);
             label_MinHR.TabIndex = 34;
@@ -162,9 +168,10 @@
             // label_MaxHR
             // 
             label_MaxHR.AutoSize = true;
+            label_MaxHR.FlatStyle = FlatStyle.Flat;
             label_MaxHR.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_MaxHR.ForeColor = Color.FromArgb(139, 58, 112);
-            label_MaxHR.Location = new Point(303, 41);
+            label_MaxHR.Location = new Point(296, 116);
             label_MaxHR.Name = "label_MaxHR";
             label_MaxHR.Size = new Size(103, 17);
             label_MaxHR.TabIndex = 33;
@@ -173,9 +180,10 @@
             // label_Distance
             // 
             label_Distance.AutoSize = true;
+            label_Distance.FlatStyle = FlatStyle.Flat;
             label_Distance.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_Distance.ForeColor = Color.FromArgb(139, 58, 112);
-            label_Distance.Location = new Point(117, 187);
+            label_Distance.Location = new Point(110, 262);
             label_Distance.Name = "label_Distance";
             label_Distance.Size = new Size(64, 17);
             label_Distance.TabIndex = 31;
@@ -184,9 +192,10 @@
             // label_AverageSpeed
             // 
             label_AverageSpeed.AutoSize = true;
+            label_AverageSpeed.FlatStyle = FlatStyle.Flat;
             label_AverageSpeed.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_AverageSpeed.ForeColor = Color.FromArgb(139, 58, 112);
-            label_AverageSpeed.Location = new Point(117, 256);
+            label_AverageSpeed.Location = new Point(296, 262);
             label_AverageSpeed.Name = "label_AverageSpeed";
             label_AverageSpeed.Size = new Size(106, 17);
             label_AverageSpeed.TabIndex = 29;
@@ -197,7 +206,7 @@
             comboBox_ExerciseList.FlatStyle = FlatStyle.Flat;
             comboBox_ExerciseList.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox_ExerciseList.FormattingEnabled = true;
-            comboBox_ExerciseList.Location = new Point(117, 73);
+            comboBox_ExerciseList.Location = new Point(113, 61);
             comboBox_ExerciseList.Name = "comboBox_ExerciseList";
             comboBox_ExerciseList.Size = new Size(120, 25);
             comboBox_ExerciseList.TabIndex = 18;
@@ -206,9 +215,10 @@
             // label_AveragePace
             // 
             label_AveragePace.AutoSize = true;
+            label_AveragePace.FlatStyle = FlatStyle.Flat;
             label_AveragePace.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_AveragePace.ForeColor = Color.FromArgb(139, 58, 112);
-            label_AveragePace.Location = new Point(117, 324);
+            label_AveragePace.Location = new Point(110, 116);
             label_AveragePace.Name = "label_AveragePace";
             label_AveragePace.Size = new Size(98, 17);
             label_AveragePace.TabIndex = 26;
@@ -217,9 +227,10 @@
             // label_Exercise
             // 
             label_Exercise.AutoSize = true;
+            label_Exercise.FlatStyle = FlatStyle.Flat;
             label_Exercise.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_Exercise.ForeColor = Color.FromArgb(139, 58, 112);
-            label_Exercise.Location = new Point(117, 41);
+            label_Exercise.Location = new Point(110, 29);
             label_Exercise.Name = "label_Exercise";
             label_Exercise.Size = new Size(59, 17);
             label_Exercise.TabIndex = 23;
@@ -228,9 +239,10 @@
             // label_CaloriesBurned
             // 
             label_CaloriesBurned.AutoSize = true;
+            label_CaloriesBurned.FlatStyle = FlatStyle.Flat;
             label_CaloriesBurned.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_CaloriesBurned.ForeColor = Color.FromArgb(139, 58, 112);
-            label_CaloriesBurned.Location = new Point(117, 114);
+            label_CaloriesBurned.Location = new Point(110, 189);
             label_CaloriesBurned.Name = "label_CaloriesBurned";
             label_CaloriesBurned.Size = new Size(103, 17);
             label_CaloriesBurned.TabIndex = 22;
@@ -240,7 +252,8 @@
             // 
             textBox_AvgSpeed.BorderStyle = BorderStyle.None;
             textBox_AvgSpeed.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_AvgSpeed.Location = new Point(117, 288);
+            textBox_AvgSpeed.Location = new Point(299, 294);
+            textBox_AvgSpeed.MaxLength = 100;
             textBox_AvgSpeed.Name = "textBox_AvgSpeed";
             textBox_AvgSpeed.Size = new Size(120, 15);
             textBox_AvgSpeed.TabIndex = 21;
@@ -249,7 +262,8 @@
             // 
             textBox_Calories.BorderStyle = BorderStyle.None;
             textBox_Calories.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_Calories.Location = new Point(117, 145);
+            textBox_Calories.Location = new Point(113, 220);
+            textBox_Calories.MaxLength = 100;
             textBox_Calories.Name = "textBox_Calories";
             textBox_Calories.Size = new Size(120, 15);
             textBox_Calories.TabIndex = 19;
@@ -259,7 +273,7 @@
             dateTimePicker_avgPace.CustomFormat = "HH:mm:ss";
             dateTimePicker_avgPace.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker_avgPace.Format = DateTimePickerFormat.Custom;
-            dateTimePicker_avgPace.Location = new Point(117, 356);
+            dateTimePicker_avgPace.Location = new Point(113, 148);
             dateTimePicker_avgPace.Name = "dateTimePicker_avgPace";
             dateTimePicker_avgPace.ShowUpDown = true;
             dateTimePicker_avgPace.Size = new Size(120, 22);
@@ -270,7 +284,8 @@
             // 
             textBox_Distance.BorderStyle = BorderStyle.None;
             textBox_Distance.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_Distance.Location = new Point(117, 219);
+            textBox_Distance.Location = new Point(113, 294);
+            textBox_Distance.MaxLength = 100;
             textBox_Distance.Name = "textBox_Distance";
             textBox_Distance.Size = new Size(120, 15);
             textBox_Distance.TabIndex = 24;

@@ -74,7 +74,7 @@ namespace ExerciseApp.AppMain_ChildForms
         /// <summary>
         /// Clears all user input interfaces on the form
         /// </summary>
-        private void ClearInput (Control parent)
+        private void ClearInput(Control parent)
         {
             foreach (Control control in parent.Controls)
             {
@@ -93,7 +93,7 @@ namespace ExerciseApp.AppMain_ChildForms
                         dateTimePicker.Value = DateTime.Today.Date;
                     }
                     else { dateTimePicker.Value = DateTime.Now; }
-                   
+
                 }
             }
         }
@@ -115,7 +115,6 @@ namespace ExerciseApp.AppMain_ChildForms
             using (NpgsqlConnection connection = new NpgsqlConnection(dbConnection))
             {
                 connection.Open();
-
 
                 // Begin a transaction as code inserts values into two tables
                 using (NpgsqlTransaction transaction = connection.BeginTransaction())
@@ -172,7 +171,7 @@ namespace ExerciseApp.AppMain_ChildForms
                             // Insert into steps table
                             string insertStepsQuery = @"INSERT INTO steps (user_id, date, steps, workout_id)
                                                         VALUES (@user_id, @date, @steps, @workout_id)";
-                            using (NpgsqlCommand commandStepsInsertQuery =  new NpgsqlCommand(insertStepsQuery, connection))
+                            using (NpgsqlCommand commandStepsInsertQuery = new NpgsqlCommand(insertStepsQuery, connection))
                             {
                                 commandStepsInsertQuery.Parameters.AddWithValue("@user_id", userId);
                                 commandStepsInsertQuery.Parameters.AddWithValue("@date", date);

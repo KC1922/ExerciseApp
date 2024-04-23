@@ -320,6 +320,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.FromArgb(224, 215, 219);
             ClientSize = new Size(707, 456);
             Controls.Add(textBox_Steps);

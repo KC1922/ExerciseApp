@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿
 namespace ExerciseApp
 {
     public partial class Form_AppMain : Form
@@ -19,11 +9,11 @@ namespace ExerciseApp
         private string username;
         private int userId;
 
-        public Form_AppMain(string username, int userId)
+        public Form_AppMain(int user_id, string username)
         {
             InitializeComponent();
             this.username = username;
-            this.userId = userId;
+            this.userId = user_id;
             label_TabTitle.Text = "Welcome Back " + username;
         }
 
@@ -79,6 +69,11 @@ namespace ExerciseApp
             OpenChildForms(new AppMain_ChildForms.Form_Trends(), sender);
         }
 
+        private void button_Steps_Click(object sender, EventArgs e)
+        {
+            OpenChildForms(new AppMain_ChildForms.Form_StepTracker(userId), sender);
+        }
+
         private void Form_AppMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -112,5 +107,7 @@ namespace ExerciseApp
             label_TabTitle.Text = childForm.Text.ToUpper();
 
         }
+
+       
     }
 }

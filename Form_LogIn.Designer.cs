@@ -100,7 +100,6 @@
             textBox_Username.Name = "textBox_Username";
             textBox_Username.Size = new Size(156, 15);
             textBox_Username.TabIndex = 0;
-            textBox_Username.Click += textBox_Username_Click;
             // 
             // textBox_Password
             // 
@@ -225,7 +224,6 @@
             Name = "Form_LogIn";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Log In";
-            Load += Form_LogIn_Load;
             panel_Title.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

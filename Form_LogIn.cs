@@ -1,9 +1,8 @@
-using Microsoft.VisualBasic.ApplicationServices;
+
 using System.Runtime.InteropServices;
 using Npgsql;
 using System.Configuration;
-using System.Data;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+
 
 namespace ExerciseApp
 {
@@ -15,10 +14,6 @@ namespace ExerciseApp
             InitializeComponent();
         }
 
-        private void Form_LogIn_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void linkLabel_Signup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -55,7 +50,7 @@ namespace ExerciseApp
                         //Form_HomeWindow form_HomeWindow = new Form_HomeWindow(enteredUsername);
                         //form_HomeWindow.Show();
                         userId = reader.GetInt32(0);
-                        Form_AppMain form_AppMain = new Form_AppMain(enteredUsername, userId);
+                        Form_AppMain form_AppMain = new Form_AppMain(userId, enteredUsername);
                         form_AppMain.Show();
                         this.Hide();
                     }
@@ -68,11 +63,6 @@ namespace ExerciseApp
                     }
                 }
             }
-        }
-
-        private void textBox_Username_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox_Password_Click(object sender, EventArgs e)

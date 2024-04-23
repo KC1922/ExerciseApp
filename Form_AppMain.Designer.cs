@@ -41,6 +41,7 @@
             panel_UpperBar = new Panel();
             label_TabTitle = new Label();
             panel_TabForms = new Panel();
+            button_Steps = new Button();
             panel_SideBar.SuspendLayout();
             panel1.SuspendLayout();
             panel_UpperBar.SuspendLayout();
@@ -49,6 +50,7 @@
             // panel_SideBar
             // 
             panel_SideBar.BackColor = Color.FromArgb(56, 61, 59);
+            panel_SideBar.Controls.Add(button_Steps);
             panel_SideBar.Controls.Add(button_Trends);
             panel_SideBar.Controls.Add(button_Calories);
             panel_SideBar.Controls.Add(button_AddWorkout);
@@ -71,11 +73,11 @@
             button_Trends.ImageAlign = ContentAlignment.MiddleLeft;
             button_Trends.ImageIndex = 2;
             button_Trends.ImageList = imageList_AppMain;
-            button_Trends.Location = new Point(0, 241);
+            button_Trends.Location = new Point(0, 274);
             button_Trends.Name = "button_Trends";
             button_Trends.Padding = new Padding(5, 0, 0, 0);
             button_Trends.Size = new Size(181, 51);
-            button_Trends.TabIndex = 6;
+            button_Trends.TabIndex = 5;
             button_Trends.Text = "Trends";
             button_Trends.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Trends.UseVisualStyleBackColor = false;
@@ -90,6 +92,7 @@
             imageList_AppMain.Images.SetKeyName(1, "Freepik_calories.png");
             imageList_AppMain.Images.SetKeyName(2, "nawicon_report.png");
             imageList_AppMain.Images.SetKeyName(3, "Smashicons_person.png");
+            imageList_AppMain.Images.SetKeyName(4, "Freepik_footsteps.png");
             // 
             // button_Calories
             // 
@@ -102,11 +105,11 @@
             button_Calories.ImageAlign = ContentAlignment.MiddleLeft;
             button_Calories.ImageIndex = 1;
             button_Calories.ImageList = imageList_AppMain;
-            button_Calories.Location = new Point(0, 184);
+            button_Calories.Location = new Point(0, 223);
             button_Calories.Name = "button_Calories";
             button_Calories.Padding = new Padding(5, 0, 0, 0);
             button_Calories.Size = new Size(181, 51);
-            button_Calories.TabIndex = 5;
+            button_Calories.TabIndex = 4;
             button_Calories.Text = "Calorie Tracker";
             button_Calories.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Calories.UseVisualStyleBackColor = false;
@@ -123,11 +126,11 @@
             button_AddWorkout.ImageAlign = ContentAlignment.MiddleLeft;
             button_AddWorkout.ImageIndex = 3;
             button_AddWorkout.ImageList = imageList_AppMain;
-            button_AddWorkout.Location = new Point(0, 127);
+            button_AddWorkout.Location = new Point(0, 121);
             button_AddWorkout.Name = "button_AddWorkout";
             button_AddWorkout.Padding = new Padding(5, 0, 0, 0);
             button_AddWorkout.Size = new Size(181, 51);
-            button_AddWorkout.TabIndex = 4;
+            button_AddWorkout.TabIndex = 2;
             button_AddWorkout.Text = "Add Workout";
             button_AddWorkout.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_AddWorkout.UseVisualStyleBackColor = false;
@@ -148,7 +151,7 @@
             button_Home.Name = "button_Home";
             button_Home.Padding = new Padding(5, 0, 0, 0);
             button_Home.Size = new Size(181, 51);
-            button_Home.TabIndex = 3;
+            button_Home.TabIndex = 1;
             button_Home.Text = "Home";
             button_Home.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Home.UseVisualStyleBackColor = false;
@@ -207,6 +210,27 @@
             panel_TabForms.Size = new Size(723, 441);
             panel_TabForms.TabIndex = 2;
             // 
+            // button_Steps
+            // 
+            button_Steps.BackColor = Color.Transparent;
+            button_Steps.FlatAppearance.BorderSize = 0;
+            button_Steps.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 79, 76);
+            button_Steps.FlatStyle = FlatStyle.Flat;
+            button_Steps.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button_Steps.ForeColor = Color.White;
+            button_Steps.ImageAlign = ContentAlignment.MiddleLeft;
+            button_Steps.ImageIndex = 4;
+            button_Steps.ImageList = imageList_AppMain;
+            button_Steps.Location = new Point(0, 172);
+            button_Steps.Name = "button_Steps";
+            button_Steps.Padding = new Padding(5, 0, 0, 0);
+            button_Steps.Size = new Size(181, 51);
+            button_Steps.TabIndex = 3;
+            button_Steps.Text = "Step Tracker";
+            button_Steps.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_Steps.UseVisualStyleBackColor = false;
+            button_Steps.Click += button_Steps_Click;
+            // 
             // Form_AppMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -216,6 +240,7 @@
             Controls.Add(panel_UpperBar);
             Controls.Add(panel_SideBar);
             Name = "Form_AppMain";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "MyFitness";
             FormClosed += Form_AppMain_FormClosed;
             panel_SideBar.ResumeLayout(false);
@@ -237,5 +262,6 @@
         private Button button_Trends;
         private Button button_Calories;
         private Panel panel_TabForms;
+        private Button button_Steps;
     }
 }

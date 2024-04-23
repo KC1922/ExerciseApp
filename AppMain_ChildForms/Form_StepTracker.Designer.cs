@@ -53,9 +53,9 @@
             button_AddSteps.FlatStyle = FlatStyle.Flat;
             button_AddSteps.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             button_AddSteps.ForeColor = Color.White;
-            button_AddSteps.Location = new Point(320, 339);
+            button_AddSteps.Location = new Point(227, 339);
             button_AddSteps.Name = "button_AddSteps";
-            button_AddSteps.Size = new Size(160, 71);
+            button_AddSteps.Size = new Size(253, 71);
             button_AddSteps.TabIndex = 0;
             button_AddSteps.Text = "Log Steps";
             button_AddSteps.UseVisualStyleBackColor = false;
@@ -78,7 +78,7 @@
             label_TotalStepsCount.Location = new Point(0, 0);
             label_TotalStepsCount.Margin = new Padding(0);
             label_TotalStepsCount.Name = "label_TotalStepsCount";
-            label_TotalStepsCount.Size = new Size(241, 100);
+            label_TotalStepsCount.Size = new Size(215, 100);
             label_TotalStepsCount.TabIndex = 1;
             label_TotalStepsCount.Text = "100";
             label_TotalStepsCount.TextAlign = ContentAlignment.MiddleCenter;
@@ -90,7 +90,7 @@
             panel_TotalSteps.Controls.Add(label_TotalStepsCount);
             panel_TotalSteps.Location = new Point(23, 12);
             panel_TotalSteps.Name = "panel_TotalSteps";
-            panel_TotalSteps.Size = new Size(241, 100);
+            panel_TotalSteps.Size = new Size(215, 100);
             panel_TotalSteps.TabIndex = 2;
             // 
             // panel_PreviousEntry
@@ -98,9 +98,9 @@
             panel_PreviousEntry.BackColor = Color.FromArgb(238, 229, 233);
             panel_PreviousEntry.Controls.Add(label_PreviousEntry);
             panel_PreviousEntry.Controls.Add(label_PreviousStepsCount);
-            panel_PreviousEntry.Location = new Point(280, 12);
+            panel_PreviousEntry.Location = new Point(248, 12);
             panel_PreviousEntry.Name = "panel_PreviousEntry";
-            panel_PreviousEntry.Size = new Size(241, 100);
+            panel_PreviousEntry.Size = new Size(215, 100);
             panel_PreviousEntry.TabIndex = 3;
             // 
             // label_PreviousEntry
@@ -125,7 +125,7 @@
             label_PreviousStepsCount.Location = new Point(0, 0);
             label_PreviousStepsCount.Margin = new Padding(0);
             label_PreviousStepsCount.Name = "label_PreviousStepsCount";
-            label_PreviousStepsCount.Size = new Size(241, 100);
+            label_PreviousStepsCount.Size = new Size(215, 100);
             label_PreviousStepsCount.TabIndex = 1;
             label_PreviousStepsCount.Text = "100";
             label_PreviousStepsCount.TextAlign = ContentAlignment.MiddleCenter;
@@ -135,9 +135,9 @@
             panel_MostSteps.BackColor = Color.FromArgb(238, 229, 233);
             panel_MostSteps.Controls.Add(label_Record);
             panel_MostSteps.Controls.Add(label_RecordCount);
-            panel_MostSteps.Location = new Point(537, 12);
+            panel_MostSteps.Location = new Point(473, 12);
             panel_MostSteps.Name = "panel_MostSteps";
-            panel_MostSteps.Size = new Size(241, 100);
+            panel_MostSteps.Size = new Size(215, 100);
             panel_MostSteps.TabIndex = 4;
             // 
             // label_Record
@@ -160,7 +160,7 @@
             label_RecordCount.Location = new Point(0, 0);
             label_RecordCount.Margin = new Padding(0);
             label_RecordCount.Name = "label_RecordCount";
-            label_RecordCount.Size = new Size(241, 100);
+            label_RecordCount.Size = new Size(215, 100);
             label_RecordCount.TabIndex = 1;
             label_RecordCount.Text = "100";
             label_RecordCount.TextAlign = ContentAlignment.MiddleCenter;
@@ -172,7 +172,7 @@
             panel_Progress.Controls.Add(label_DayProgress);
             panel_Progress.Location = new Point(23, 175);
             panel_Progress.Name = "panel_Progress";
-            panel_Progress.Size = new Size(755, 100);
+            panel_Progress.Size = new Size(665, 100);
             panel_Progress.TabIndex = 4;
             // 
             // label_CurrentDaily
@@ -183,7 +183,7 @@
             label_CurrentDaily.ForeColor = Color.White;
             label_CurrentDaily.Location = new Point(0, 0);
             label_CurrentDaily.Name = "label_CurrentDaily";
-            label_CurrentDaily.Size = new Size(755, 17);
+            label_CurrentDaily.Size = new Size(665, 17);
             label_CurrentDaily.TabIndex = 0;
             label_CurrentDaily.Text = "Current Daily Progress";
             label_CurrentDaily.TextAlign = ContentAlignment.TopCenter;
@@ -197,7 +197,7 @@
             label_DayProgress.Location = new Point(0, 0);
             label_DayProgress.Margin = new Padding(0);
             label_DayProgress.Name = "label_DayProgress";
-            label_DayProgress.Size = new Size(755, 100);
+            label_DayProgress.Size = new Size(665, 100);
             label_DayProgress.TabIndex = 1;
             label_DayProgress.Text = "0/8000";
             label_DayProgress.TextAlign = ContentAlignment.MiddleCenter;
@@ -206,15 +206,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.FromArgb(224, 215, 219);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(707, 456);
             Controls.Add(panel_Progress);
             Controls.Add(panel_MostSteps);
             Controls.Add(panel_PreviousEntry);
             Controls.Add(panel_TotalSteps);
             Controls.Add(button_AddSteps);
             Name = "Form_StepTracker";
-            Text = "Form_StepTracker";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Step Tracker";
+            Load += Form_StepTracker_Load;
             panel_TotalSteps.ResumeLayout(false);
             panel_TotalSteps.PerformLayout();
             panel_PreviousEntry.ResumeLayout(false);

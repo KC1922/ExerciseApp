@@ -9,10 +9,10 @@ namespace ExerciseApp.AppMain_ChildForms
     {
         private string dbConnection = ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
         private int userId;
-        public Form_AddWorkout(int userId)
+        public Form_AddWorkout(int user_id)
         {
             InitializeComponent();
-            this.userId = userId;
+            this.userId = user_id;
         }
 
 
@@ -69,23 +69,40 @@ namespace ExerciseApp.AppMain_ChildForms
             dateTimePicker_avgPace.Enabled = enable;
             textBox_AvgSpeed.Enabled = enable;
             textBox_Distance.Enabled = enable;
+            textBox_Steps.Enabled = enable;
         }
         /// <summary>
-        /// Changes textbox color
+        /// Clears all user input interfaces on the form
         /// </summary>
-        /// <param name="color"></param>
-        private void ChangeTextBoxColor(Color color)
+        private void ClearInput (Control parent)
         {
-            dateTimePicker_avgPace.BackColor = color;
-            textBox_AvgSpeed.BackColor = color;
-            textBox_Distance.BackColor = color;
+            foreach (Control control in parent.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Clear();
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = -1;
+                }
+                else if (control is DateTimePicker dateTimePicker)
+                {
+                    if (dateTimePicker.CustomFormat == "HH:mm:ss")
+                    {
+                        dateTimePicker.Value = DateTime.Today.Date;
+                    }
+                    else { dateTimePicker.Value = DateTime.Now; }
+                   
+                }
+            }
         }
-
 
         private void button_Add_Click(object sender, EventArgs e)
         {
             int exercise = comboBox_ExerciseList.SelectedIndex + 1; //Add one since database is offset by 1 compared to combobox index
             string calories = textBox_Calories.Text;
+            string steps = textBox_Steps.Text;
             DateTime avgPace = dateTimePicker_avgPace.Value;
             string distance = textBox_Distance.Text;
             string avgSpeed = textBox_AvgSpeed.Text;
@@ -118,7 +135,7 @@ namespace ExerciseApp.AppMain_ChildForms
                             command.Parameters.AddWithValue("@calories_burned", string.IsNullOrEmpty(calories) ? 0 : int.Parse(calories));
                             command.Parameters.AddWithValue("@max_hr", string.IsNullOrEmpty(maxHr) ? 0 : int.Parse(maxHr));
                             command.Parameters.AddWithValue("@min_hr", string.IsNullOrEmpty(minHr) ? 0 : int.Parse(minHr));
-                            command.Parameters.AddWithValue("@distance", string.IsNullOrEmpty(distance) ? 0 : int.Parse(distance));
+                            command.Parameters.AddWithValue("@distance", string.IsNullOrEmpty(distance) ? 0 : decimal.Parse(distance));
                             command.Parameters.AddWithValue("@avg_pace", avgPace);
                             command.Parameters.AddWithValue("@avg_speed", string.IsNullOrEmpty(avgSpeed) ? 0 : int.Parse(avgSpeed));
 
@@ -151,9 +168,32 @@ namespace ExerciseApp.AppMain_ChildForms
                                 }
 
                             }
+
+                            // Insert into steps table
+                            string insertStepsQuery = @"INSERT INTO steps (user_id, date, steps, workout_id)
+                                                        VALUES (@user_id, @date, @steps, @workout_id)";
+                            using (NpgsqlCommand commandStepsInsertQuery =  new NpgsqlCommand(insertStepsQuery, connection))
+                            {
+                                commandStepsInsertQuery.Parameters.AddWithValue("@user_id", userId);
+                                commandStepsInsertQuery.Parameters.AddWithValue("@date", date);
+                                commandStepsInsertQuery.Parameters.AddWithValue("@workout_id", workout_id);
+                                try
+                                {
+                                    commandStepsInsertQuery.Parameters.AddWithValue("@steps", string.IsNullOrEmpty(steps) ? 0 : int.Parse(steps));
+                                }
+                                catch (FormatException) { throw new Exception($"Steps contained invalid character {steps}"); }
+
+                                int rowsAffected = commandStepsInsertQuery.ExecuteNonQuery();
+                                if (rowsAffected == 0)
+                                {
+                                    throw new Exception("Failed to insert steps.");
+                                }
+
+                            }
                         }
                         transaction.Commit();
                         MessageBox.Show("Workout added.");
+                        ClearInput(this);
                     }
                     catch (PostgresException ex)
                     {

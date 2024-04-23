@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             button_Add = new Button();
             dateTimePicker_Duration = new DateTimePicker();
             dateTimePicker_StartTime = new DateTimePicker();
@@ -49,6 +50,9 @@
             textBox_Calories = new TextBox();
             dateTimePicker_avgPace = new DateTimePicker();
             textBox_Distance = new TextBox();
+            toolTip_AddWorkoutForm = new ToolTip(components);
+            label_Steps = new Label();
+            textBox_Steps = new TextBox();
             SuspendLayout();
             // 
             // button_Add
@@ -56,7 +60,7 @@
             button_Add.BackColor = Color.FromArgb(139, 58, 112);
             button_Add.FlatAppearance.BorderColor = Color.White;
             button_Add.FlatStyle = FlatStyle.Flat;
-            button_Add.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button_Add.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button_Add.ForeColor = Color.White;
             button_Add.Location = new Point(113, 342);
             button_Add.Name = "button_Add";
@@ -183,7 +187,7 @@
             label_Distance.FlatStyle = FlatStyle.Flat;
             label_Distance.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_Distance.ForeColor = Color.FromArgb(139, 58, 112);
-            label_Distance.Location = new Point(110, 262);
+            label_Distance.Location = new Point(113, 189);
             label_Distance.Name = "label_Distance";
             label_Distance.Size = new Size(64, 17);
             label_Distance.TabIndex = 31;
@@ -195,7 +199,7 @@
             label_AverageSpeed.FlatStyle = FlatStyle.Flat;
             label_AverageSpeed.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_AverageSpeed.ForeColor = Color.FromArgb(139, 58, 112);
-            label_AverageSpeed.Location = new Point(296, 262);
+            label_AverageSpeed.Location = new Point(116, 261);
             label_AverageSpeed.Name = "label_AverageSpeed";
             label_AverageSpeed.Size = new Size(106, 17);
             label_AverageSpeed.TabIndex = 29;
@@ -218,7 +222,7 @@
             label_AveragePace.FlatStyle = FlatStyle.Flat;
             label_AveragePace.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_AveragePace.ForeColor = Color.FromArgb(139, 58, 112);
-            label_AveragePace.Location = new Point(110, 116);
+            label_AveragePace.Location = new Point(296, 261);
             label_AveragePace.Name = "label_AveragePace";
             label_AveragePace.Size = new Size(98, 17);
             label_AveragePace.TabIndex = 26;
@@ -242,7 +246,7 @@
             label_CaloriesBurned.FlatStyle = FlatStyle.Flat;
             label_CaloriesBurned.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label_CaloriesBurned.ForeColor = Color.FromArgb(139, 58, 112);
-            label_CaloriesBurned.Location = new Point(110, 189);
+            label_CaloriesBurned.Location = new Point(299, 29);
             label_CaloriesBurned.Name = "label_CaloriesBurned";
             label_CaloriesBurned.Size = new Size(103, 17);
             label_CaloriesBurned.TabIndex = 22;
@@ -252,7 +256,7 @@
             // 
             textBox_AvgSpeed.BorderStyle = BorderStyle.None;
             textBox_AvgSpeed.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_AvgSpeed.Location = new Point(299, 294);
+            textBox_AvgSpeed.Location = new Point(119, 293);
             textBox_AvgSpeed.MaxLength = 100;
             textBox_AvgSpeed.Name = "textBox_AvgSpeed";
             textBox_AvgSpeed.Size = new Size(120, 15);
@@ -262,7 +266,7 @@
             // 
             textBox_Calories.BorderStyle = BorderStyle.None;
             textBox_Calories.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_Calories.Location = new Point(113, 220);
+            textBox_Calories.Location = new Point(302, 60);
             textBox_Calories.MaxLength = 100;
             textBox_Calories.Name = "textBox_Calories";
             textBox_Calories.Size = new Size(120, 15);
@@ -273,7 +277,7 @@
             dateTimePicker_avgPace.CustomFormat = "HH:mm:ss";
             dateTimePicker_avgPace.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker_avgPace.Format = DateTimePickerFormat.Custom;
-            dateTimePicker_avgPace.Location = new Point(113, 148);
+            dateTimePicker_avgPace.Location = new Point(299, 290);
             dateTimePicker_avgPace.Name = "dateTimePicker_avgPace";
             dateTimePicker_avgPace.ShowUpDown = true;
             dateTimePicker_avgPace.Size = new Size(120, 22);
@@ -284,18 +288,42 @@
             // 
             textBox_Distance.BorderStyle = BorderStyle.None;
             textBox_Distance.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_Distance.Location = new Point(113, 294);
+            textBox_Distance.Location = new Point(116, 221);
             textBox_Distance.MaxLength = 100;
             textBox_Distance.Name = "textBox_Distance";
             textBox_Distance.Size = new Size(120, 15);
             textBox_Distance.TabIndex = 24;
             // 
+            // label_Steps
+            // 
+            label_Steps.AutoSize = true;
+            label_Steps.FlatStyle = FlatStyle.Flat;
+            label_Steps.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label_Steps.ForeColor = Color.FromArgb(139, 58, 112);
+            label_Steps.Location = new Point(119, 116);
+            label_Steps.Name = "label_Steps";
+            label_Steps.Size = new Size(44, 17);
+            label_Steps.TabIndex = 40;
+            label_Steps.Text = "Steps:";
+            // 
+            // textBox_Steps
+            // 
+            textBox_Steps.BorderStyle = BorderStyle.None;
+            textBox_Steps.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_Steps.Location = new Point(116, 148);
+            textBox_Steps.MaxLength = 100;
+            textBox_Steps.Name = "textBox_Steps";
+            textBox_Steps.Size = new Size(120, 15);
+            textBox_Steps.TabIndex = 41;
+            // 
             // Form_AddWorkout
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(238, 229, 233);
+            BackColor = Color.FromArgb(224, 215, 219);
             ClientSize = new Size(707, 456);
+            Controls.Add(textBox_Steps);
+            Controls.Add(label_Steps);
             Controls.Add(dateTimePicker_avgPace);
             Controls.Add(button_Add);
             Controls.Add(dateTimePicker_Duration);
@@ -348,5 +376,8 @@
         private TextBox textBox_Calories;
         private DateTimePicker dateTimePicker_avgPace;
         private TextBox textBox_Distance;
+        private ToolTip toolTip_AddWorkoutForm;
+        private Label label_Steps;
+        private TextBox textBox_Steps;
     }
 }

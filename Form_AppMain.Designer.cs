@@ -31,8 +31,9 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AppMain));
             panel_SideBar = new Panel();
-            button_Trends = new Button();
+            button_Steps = new Button();
             imageList_AppMain = new ImageList(components);
+            button_Trends = new Button();
             button_Calories = new Button();
             button_AddWorkout = new Button();
             button_Home = new Button();
@@ -41,7 +42,6 @@
             panel_UpperBar = new Panel();
             label_TabTitle = new Label();
             panel_TabForms = new Panel();
-            button_Steps = new Button();
             panel_SideBar.SuspendLayout();
             panel1.SuspendLayout();
             panel_UpperBar.SuspendLayout();
@@ -61,6 +61,38 @@
             panel_SideBar.Name = "panel_SideBar";
             panel_SideBar.Size = new Size(181, 511);
             panel_SideBar.TabIndex = 0;
+            // 
+            // button_Steps
+            // 
+            button_Steps.BackColor = Color.Transparent;
+            button_Steps.FlatAppearance.BorderSize = 0;
+            button_Steps.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 79, 76);
+            button_Steps.FlatStyle = FlatStyle.Flat;
+            button_Steps.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button_Steps.ForeColor = Color.White;
+            button_Steps.ImageAlign = ContentAlignment.MiddleLeft;
+            button_Steps.ImageIndex = 4;
+            button_Steps.ImageList = imageList_AppMain;
+            button_Steps.Location = new Point(0, 172);
+            button_Steps.Name = "button_Steps";
+            button_Steps.Padding = new Padding(5, 0, 0, 0);
+            button_Steps.Size = new Size(181, 51);
+            button_Steps.TabIndex = 3;
+            button_Steps.Text = "Step Tracker";
+            button_Steps.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_Steps.UseVisualStyleBackColor = false;
+            button_Steps.Click += button_Steps_Click;
+            // 
+            // imageList_AppMain
+            // 
+            imageList_AppMain.ColorDepth = ColorDepth.Depth32Bit;
+            imageList_AppMain.ImageStream = (ImageListStreamer)resources.GetObject("imageList_AppMain.ImageStream");
+            imageList_AppMain.TransparentColor = Color.Transparent;
+            imageList_AppMain.Images.SetKeyName(0, "Dave_Gandy_home.png");
+            imageList_AppMain.Images.SetKeyName(1, "Freepik_calories.png");
+            imageList_AppMain.Images.SetKeyName(2, "nawicon_report.png");
+            imageList_AppMain.Images.SetKeyName(3, "Smashicons_person.png");
+            imageList_AppMain.Images.SetKeyName(4, "Freepik_footsteps.png");
             // 
             // button_Trends
             // 
@@ -82,17 +114,6 @@
             button_Trends.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Trends.UseVisualStyleBackColor = false;
             button_Trends.Click += button_Trends_Click;
-            // 
-            // imageList_AppMain
-            // 
-            imageList_AppMain.ColorDepth = ColorDepth.Depth32Bit;
-            imageList_AppMain.ImageStream = (ImageListStreamer)resources.GetObject("imageList_AppMain.ImageStream");
-            imageList_AppMain.TransparentColor = Color.Transparent;
-            imageList_AppMain.Images.SetKeyName(0, "Dave_Gandy_home.png");
-            imageList_AppMain.Images.SetKeyName(1, "Freepik_calories.png");
-            imageList_AppMain.Images.SetKeyName(2, "nawicon_report.png");
-            imageList_AppMain.Images.SetKeyName(3, "Smashicons_person.png");
-            imageList_AppMain.Images.SetKeyName(4, "Freepik_footsteps.png");
             // 
             // button_Calories
             // 
@@ -210,27 +231,6 @@
             panel_TabForms.Size = new Size(723, 441);
             panel_TabForms.TabIndex = 2;
             // 
-            // button_Steps
-            // 
-            button_Steps.BackColor = Color.Transparent;
-            button_Steps.FlatAppearance.BorderSize = 0;
-            button_Steps.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 79, 76);
-            button_Steps.FlatStyle = FlatStyle.Flat;
-            button_Steps.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button_Steps.ForeColor = Color.White;
-            button_Steps.ImageAlign = ContentAlignment.MiddleLeft;
-            button_Steps.ImageIndex = 4;
-            button_Steps.ImageList = imageList_AppMain;
-            button_Steps.Location = new Point(0, 172);
-            button_Steps.Name = "button_Steps";
-            button_Steps.Padding = new Padding(5, 0, 0, 0);
-            button_Steps.Size = new Size(181, 51);
-            button_Steps.TabIndex = 3;
-            button_Steps.Text = "Step Tracker";
-            button_Steps.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Steps.UseVisualStyleBackColor = false;
-            button_Steps.Click += button_Steps_Click;
-            // 
             // Form_AppMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -240,7 +240,7 @@
             Controls.Add(panel_UpperBar);
             Controls.Add(panel_SideBar);
             Name = "Form_AppMain";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MyFitness";
             FormClosed += Form_AppMain_FormClosed;
             panel_SideBar.ResumeLayout(false);

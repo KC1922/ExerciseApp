@@ -243,6 +243,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MyFitness";
             FormClosed += Form_AppMain_FormClosed;
+            Load += Form_AppMain_Load;
             panel_SideBar.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel_UpperBar.ResumeLayout(false);

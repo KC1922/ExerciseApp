@@ -14,6 +14,12 @@ namespace ExerciseApp
             InitializeComponent();
             this.username = username;
             this.userId = user_id;
+        }
+
+
+        private void Form_AppMain_Load(object sender, EventArgs e)
+        {
+            button_Home.PerformClick();
             label_TabTitle.Text = "Welcome Back " + username;
         }
 
@@ -48,6 +54,7 @@ namespace ExerciseApp
                 }
             }
         }
+
 
         private void button_Home_Click(object sender, EventArgs e)
         {
@@ -107,7 +114,6 @@ namespace ExerciseApp
             label_TabTitle.Text = childForm.Text.ToUpper();
 
         }
-
 
     }
 }

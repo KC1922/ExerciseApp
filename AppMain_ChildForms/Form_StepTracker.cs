@@ -20,6 +20,7 @@ namespace ExerciseApp.AppMain_ChildForms
         private int totalDailySteps;
         private string dbConnection = ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
         DateTime currentDate = DateTime.Today;
+        private Color highlight = Color.FromArgb(140, 33, 85);
         public Form_StepTracker(int userId)
         {
             InitializeComponent();
@@ -45,10 +46,19 @@ namespace ExerciseApp.AppMain_ChildForms
                 using (NpgsqlCommand command = new NpgsqlCommand(previousStepsQuery, connection))
                 {
                     command.Parameters.AddWithValue("@user_id", userId);
-                    int prevSteps = 0;
-                    try { prevSteps = Convert.ToInt32(command.ExecuteScalar()); }
+                    object queryResult = 0;
+                    try { queryResult = command.ExecuteScalar(); }
                     catch (Exception ex) { MessageBox.Show("Error loading from database"); }
-                    label_PreviousStepsCount.Text = prevSteps.ToString();
+
+                    if (queryResult != DBNull.Value && queryResult != null)
+                    {
+                        label_PreviousStepsCount.Text = queryResult.ToString();
+                    }
+                    else
+                    {
+                        label_PreviousStepsCount.Text = "0";
+                    }
+
                 }
 
                 string recordStepsQuery = "SELECT MAX(steps) FROM steps WHERE user_id = @user_id GROUP BY date";
@@ -61,13 +71,32 @@ namespace ExerciseApp.AppMain_ChildForms
                     label_RecordCount.Text = recordSteps.ToString();
                 }
 
-                string totalDailySteps = "SELECT SUM(steps) FROM steps WHERE user_id = @user_id GROUP BY date ORDER BY date DESC LIMIT 1";
+                string totalDailySteps = "SELECT SUM(steps) FROM steps WHERE user_id = @user_id AND date = @date GROUP BY date ORDER BY date DESC LIMIT 1";
                 using (NpgsqlCommand command = new NpgsqlCommand(totalDailySteps, connection))
                 {
+                    DateTime today = DateTime.Now;
                     command.Parameters.AddWithValue("@user_id", userId);
-                    try { this.totalDailySteps = Convert.ToInt32(command.ExecuteScalar()); }
+                    command.Parameters.AddWithValue("@date", today);
+                    object queryResult = 0;
+                    try { queryResult = command.ExecuteScalar(); }
                     catch { MessageBox.Show("Error loading from database"); }
-                    label_DayProgress.Text = this.totalDailySteps.ToString() + "/8000";
+                    // Check if a entry exists for the current
+                    if (queryResult != DBNull.Value)
+                    {
+                        this.totalDailySteps = Convert.ToInt32(queryResult);
+                        label_DayProgress.Text = this.totalDailySteps.ToString() + "/8000";
+                    }
+                    else
+                    {
+                        label_DayProgress.Text = "0/8000";
+                    }
+
+
+                }
+
+                if (this.totalDailySteps >= 8000)
+                {
+                    label_DayProgress.ForeColor = highlight;
                 }
             }
         }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace ExerciseApp.AppMain_ChildForms
         private int totalDailySteps;
         private string dbConnection = ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
         DateTime currentDate = DateTime.Today;
+
         private Color highlight = Color.FromArgb(140, 33, 85);
         public Form_StepTracker(int userId)
         {
@@ -32,6 +34,10 @@ namespace ExerciseApp.AppMain_ChildForms
             using (NpgsqlConnection connection = new NpgsqlConnection(dbConnection))
             {
                 connection.Open();
+
+                string formattedDate = currentDate.ToString("yyyy-MM-dd");
+                IFormatProvider culture = new CultureInfo("en-US", true);
+                DateTime dateVal = DateTime.ParseExact(formattedDate, "yyyy-MM-dd", culture);
 
                 string totalStepsQuery = "SELECT SUM(steps) FROM steps WHERE user_id = @user_id";
                 using (NpgsqlCommand command = new NpgsqlCommand(totalStepsQuery, connection))
@@ -61,7 +67,7 @@ namespace ExerciseApp.AppMain_ChildForms
 
                 }
 
-                string recordStepsQuery = "SELECT MAX(steps) FROM steps WHERE user_id = @user_id GROUP BY date";
+                string recordStepsQuery = "SELECT MAX(steps) FROM steps WHERE user_id = @user_id";
                 using (NpgsqlCommand command = new NpgsqlCommand(recordStepsQuery, connection))
                 {
                     command.Parameters.AddWithValue("@user_id", userId);
@@ -74,14 +80,13 @@ namespace ExerciseApp.AppMain_ChildForms
                 string totalDailySteps = "SELECT SUM(steps) FROM steps WHERE user_id = @user_id AND date = @date GROUP BY date ORDER BY date DESC LIMIT 1";
                 using (NpgsqlCommand command = new NpgsqlCommand(totalDailySteps, connection))
                 {
-                    DateTime today = DateTime.Now;
+
                     command.Parameters.AddWithValue("@user_id", userId);
-                    command.Parameters.AddWithValue("@date", today);
+                    command.Parameters.AddWithValue("@date", dateVal);
                     object queryResult = 0;
                     try { queryResult = command.ExecuteScalar(); }
                     catch { MessageBox.Show("Error loading from database"); }
-                    // Check if a entry exists for the current
-                    if (queryResult != DBNull.Value)
+                    if (queryResult != DBNull.Value && queryResult != null)
                     {
                         this.totalDailySteps = Convert.ToInt32(queryResult);
                         label_DayProgress.Text = this.totalDailySteps.ToString() + "/8000";

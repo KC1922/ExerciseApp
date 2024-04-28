@@ -5,7 +5,7 @@ namespace ExerciseApp
     {
         private Button currentButton;
         private Color highlight = Color.FromArgb(198, 52, 149);
-        private Form activeForm;
+        private Form activeForm; // Used to open the subforms
         private string username;
         private int userId;
 
@@ -56,27 +56,27 @@ namespace ExerciseApp
         }
 
 
-        private void button_Home_Click(object sender, EventArgs e)
+        public void button_Home_Click(object sender, EventArgs e)
         {
-            OpenChildForms(new AppMain_ChildForms.Form_Home(), sender);
+            OpenChildForms(new AppMain_ChildForms.Form_Home(this, userId), sender);
         }
 
-        private void button_AddWorkout_Click(object sender, EventArgs e)
+        public void button_AddWorkout_Click(object sender, EventArgs e)
         {
             OpenChildForms(new AppMain_ChildForms.Form_AddWorkout(userId), sender);
         }
 
-        private void button_Calories_Click(object sender, EventArgs e)
+        public void button_Calories_Click(object sender, EventArgs e)
         {
             OpenChildForms(new AppMain_ChildForms.Form_CalorieTracker(), sender);
         }
 
-        private void button_Trends_Click(object sender, EventArgs e)
+        public void button_Trends_Click(object sender, EventArgs e)
         {
             OpenChildForms(new AppMain_ChildForms.Form_Trends(), sender);
         }
 
-        private void button_Steps_Click(object sender, EventArgs e)
+        public void button_Steps_Click(object sender, EventArgs e)
         {
             OpenChildForms(new AppMain_ChildForms.Form_StepTracker(userId), sender);
         }

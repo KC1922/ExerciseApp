@@ -30,8 +30,11 @@
         {
             panel_WeekReview = new Panel();
             label_WeekInReview = new Label();
-            panel_steps = new Panel();
+            panel_WeeklySteps = new Panel();
+            label_WeeklySteps = new Label();
+            label_TotalStepsCount = new Label();
             panel_WeekReview.SuspendLayout();
+            panel_WeeklySteps.SuspendLayout();
             SuspendLayout();
             // 
             // panel_WeekReview
@@ -55,13 +58,39 @@
             label_WeekInReview.Text = "Week in Review";
             label_WeekInReview.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel_steps
+            // panel_WeeklySteps
             // 
-            panel_steps.BackColor = Color.FromArgb(238, 229, 233);
-            panel_steps.Location = new Point(21, 62);
-            panel_steps.Name = "panel_steps";
-            panel_steps.Size = new Size(134, 100);
-            panel_steps.TabIndex = 1;
+            panel_WeeklySteps.BackColor = Color.FromArgb(238, 229, 233);
+            panel_WeeklySteps.Controls.Add(label_WeeklySteps);
+            panel_WeeklySteps.Controls.Add(label_TotalStepsCount);
+            panel_WeeklySteps.Location = new Point(12, 62);
+            panel_WeeklySteps.Name = "panel_WeeklySteps";
+            panel_WeeklySteps.Size = new Size(215, 100);
+            panel_WeeklySteps.TabIndex = 3;
+            // 
+            // label_WeeklySteps
+            // 
+            label_WeeklySteps.AutoSize = true;
+            label_WeeklySteps.Dock = DockStyle.Left;
+            label_WeeklySteps.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label_WeeklySteps.Location = new Point(0, 0);
+            label_WeeklySteps.Name = "label_WeeklySteps";
+            label_WeeklySteps.Size = new Size(105, 17);
+            label_WeeklySteps.TabIndex = 0;
+            label_WeeklySteps.Text = "Steps This Week:";
+            // 
+            // label_TotalStepsCount
+            // 
+            label_TotalStepsCount.Dock = DockStyle.Fill;
+            label_TotalStepsCount.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label_TotalStepsCount.Location = new Point(0, 0);
+            label_TotalStepsCount.Margin = new Padding(0);
+            label_TotalStepsCount.Name = "label_TotalStepsCount";
+            label_TotalStepsCount.Size = new Size(215, 100);
+            label_TotalStepsCount.TabIndex = 1;
+            label_TotalStepsCount.Text = "100";
+            label_TotalStepsCount.TextAlign = ContentAlignment.MiddleCenter;
+            label_TotalStepsCount.Click += label_TotalStepsCount_Click;
             // 
             // Form_Home
             // 
@@ -69,11 +98,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(707, 456);
-            Controls.Add(panel_steps);
+            Controls.Add(panel_WeeklySteps);
             Controls.Add(panel_WeekReview);
             Name = "Form_Home";
             Text = "Home";
+            Load += Form_Home_Load;
             panel_WeekReview.ResumeLayout(false);
+            panel_WeeklySteps.ResumeLayout(false);
+            panel_WeeklySteps.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -81,6 +113,8 @@
 
         private Panel panel_WeekReview;
         private Label label_WeekInReview;
-        private Panel panel_steps;
+        private Panel panel_WeeklySteps;
+        private Label label_WeeklySteps;
+        private Label label_TotalStepsCount;
     }
 }

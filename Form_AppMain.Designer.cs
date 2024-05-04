@@ -42,6 +42,7 @@
             panel_UpperBar = new Panel();
             label_TabTitle = new Label();
             panel_TabForms = new Panel();
+            button_userInfo = new Button();
             panel_SideBar.SuspendLayout();
             panel1.SuspendLayout();
             panel_UpperBar.SuspendLayout();
@@ -50,6 +51,7 @@
             // panel_SideBar
             // 
             panel_SideBar.BackColor = Color.FromArgb(56, 61, 59);
+            panel_SideBar.Controls.Add(button_userInfo);
             panel_SideBar.Controls.Add(button_Steps);
             panel_SideBar.Controls.Add(button_Trends);
             panel_SideBar.Controls.Add(button_Calories);
@@ -231,6 +233,26 @@
             panel_TabForms.Size = new Size(723, 441);
             panel_TabForms.TabIndex = 2;
             // 
+            // button_userInfo
+            // 
+            button_userInfo.BackColor = Color.Transparent;
+            button_userInfo.FlatAppearance.BorderSize = 0;
+            button_userInfo.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 79, 76);
+            button_userInfo.FlatStyle = FlatStyle.Flat;
+            button_userInfo.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button_userInfo.ForeColor = Color.White;
+            button_userInfo.ImageAlign = ContentAlignment.MiddleLeft;
+            button_userInfo.ImageIndex = 2;
+            button_userInfo.ImageList = imageList_AppMain;
+            button_userInfo.Location = new Point(0, 325);
+            button_userInfo.Name = "button_userInfo";
+            button_userInfo.Padding = new Padding(5, 0, 0, 0);
+            button_userInfo.Size = new Size(181, 51);
+            button_userInfo.TabIndex = 6;
+            button_userInfo.Text = "My Information";
+            button_userInfo.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_userInfo.UseVisualStyleBackColor = false;
+            // 
             // Form_AppMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -264,5 +286,6 @@
         private Button button_Calories;
         private Panel panel_TabForms;
         private Button button_Steps;
+        private Button button_userInfo;
     }
 }
